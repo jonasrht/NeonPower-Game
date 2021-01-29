@@ -86,7 +86,7 @@ building4.src = 'assets/img/building_hotel.png'
 
 // Blume Bild
 const flower = new Image();
-flower.src = 'assets/img/flowers.png'
+flower.src = 'assets/img/flowers-big.png'
 
 const BG = {
     y1: 0,
@@ -121,7 +121,10 @@ function background1() {
     ctx.drawImage(building4, 3, BG.y2 + 100);
 
     // Blumen
-    ctx.drawImage(flower, 950, BG.y2);  
+    ctx.drawImage(flower, 950, BG.y2 -81);
+    ctx.drawImage(flower, 950, BG.y2 -229);
+    ctx.drawImage(flower, 950, BG.y2 -377);
+    ctx.drawImage(flower, 950, BG.y2 -525);     
 
 }
 
@@ -160,6 +163,23 @@ const powerup = new Powerups();
 
 function handlePowerup() {
     powerup.draw();
+}
+
+const wasd = new Image();
+wasd.src = 'assets/img/wasd.png'
+
+function drawTutorial() {
+
+    ctx.fillStyle = 'white';
+    ctx.font = '60px pressStart2P';
+    ctx.fillText('Press', 525, 80);
+
+    // "W A S D" Bild
+    ctx.drawImage(wasd, 420, 100);
+
+    ctx.fillStyle = 'white';
+    ctx.font = '60px pressStart2P';
+    ctx.fillText('To move', 460, 500);
 }
 
 
@@ -216,17 +236,20 @@ function animate() {
     //Erstellen der Spielfigur
     car.update();
     car.draw();
-    //Erstellen der Gegner
-    handleEnemies();
-    drawScore();
-    drawLives();
-    score++;
+    if (frame < 500) {
+        drawTutorial();
+    }else {
+        //Erstellen der Gegner
+        handleEnemies();
+        drawScore();
+        drawLives();
+        score++;
 
     // Leben +1 Schriftzug, bei powerup. Wird in powerups.js auf true gesetzt.
-    if (drawPlusLive) {
-        ctx.fillStyle = 'green';
-        ctx.font = '30px pressStart2P';
-        ctx.fillText('+1', addLive.x, addLive.y);
+        if (drawPlusLive) {
+            ctx.fillStyle = 'green';
+            ctx.font = '30px pressStart2P';
+            ctx.fillText('+1', addLive.x, addLive.y);
         if (addLive.y > 100) {
             addLive.y--;
         } else {
@@ -243,12 +266,13 @@ function animate() {
         }
         starModeCount++;
     }
+    }
+    
+
+    
     // Wenn Gameover, dann unterbreche den Animation loop
     if(!gameOver){
         requestAnimationFrame(animate);
-    }
-    if (frame == 6000) {
-        frame = 0;
     }
     frame++;
     
