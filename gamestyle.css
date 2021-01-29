@@ -1,0 +1,48 @@
+#canvas1 {
+    position:  absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1278px;
+    height: 1024px;
+    border: 2px solid black;
+}
+
+#canvas2 {
+    position:  absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1278px;
+    height: 1024px;
+    border: 2px solid black;
+}
+
+body {
+    background-color: black;
+    background-image: src('../assets/img/background.jpg');
+}
+
+#mainDiv {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#logoEl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+}
+
+#logoEl img {
+    width: 20%;
+}
+
+#btnCenter {
+
+}
+

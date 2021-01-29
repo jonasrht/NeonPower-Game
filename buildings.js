@@ -1,0 +1,6 @@
+class buildings {
+    constructor() {
+
+    }
+}
+
