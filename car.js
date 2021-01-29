@@ -1,6 +1,12 @@
 const carModel = new Image();
 carModel.src = 'assets/img/car.png';
 
+const carModelLeft = new Image();
+carModelLeft.src = 'assets/img/car-left.png';
+
+const carModelRight = new Image();
+carModelRight.src = 'assets/img/car-right.png';
+
 const carCrashModel = new Image();
 carCrashModel.src = 'assets/img/carCrash.png';
 
@@ -16,7 +22,7 @@ carStar.src = 'assets/img/car-star.png';
 class Car {
 
     // Konstruktor für das Auto Objekt
-    constructor(){
+    constructor() {
         this.x = 530;
         this.y = 825;
         this.vy = 0;
@@ -26,7 +32,7 @@ class Car {
     }
 
     // Methode um speed und postion zu kalkulieren
-    update(){
+    update() {
 
         // Grenten
         if (this.y > canvas.height - this.height) {
@@ -40,7 +46,7 @@ class Car {
         if (this.x > canvas.width - this.width) {
             this.x -= this.speed;
         }
-        
+
         // x-Achsen grenze für die bewegung des Autos
         if (this.x > 790) {
             this.x -= this.speed;
@@ -70,7 +76,7 @@ class Car {
 
     }
 
-    draw(){
+    draw() {
         if (starMode == true) {
             ctx.drawImage(carStar, this.x, this.y, this.width, this.height);
             //ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
@@ -90,11 +96,18 @@ class Car {
                     break;
                 // Bild bei mehr als zwei Leben
                 default:
-                    ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
+                    if (aPressed) {
+                        ctx.drawImage(carModelLeft, this.x, this.y, 108, 178);
+                    } else if (dPressed) {
+                        ctx.drawImage(carModelRight, this.x, this.y, 108, 178);
+                    } else {
+                        ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
+                    }
+
                     break;
             }
         }
-        
+
     }
 }
 
