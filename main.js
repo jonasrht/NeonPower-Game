@@ -244,7 +244,7 @@ function animate() {
 
         //Erstellen der Powerups
         //if (frame < 1000 || frame > 4000) {
-        handlePowerup();
+
         //}
 
 
@@ -254,6 +254,7 @@ function animate() {
         if (frame < 500 && tutorialWatched == false) {
             drawTutorial();
         } else {
+            handlePowerup();
             //Erstellen der Gegner
             handleEnemies();
             drawScore();
@@ -262,7 +263,7 @@ function animate() {
 
             // Leben +1 Schriftzug, bei powerup. Wird in powerups.js auf true gesetzt.
             if (drawPlusLive) {
-                ctx.fillStyle = 'green';
+                ctx.fillStyle = 'rgb(57,255,20)';
                 ctx.font = '30px pressStart2P';
                 ctx.fillText('+1', addLive.x, addLive.y);
                 if (addLive.y > 100) {
