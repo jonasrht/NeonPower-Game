@@ -41,6 +41,7 @@ class Enemies {
             this.y = 0 - this.spriteHeight;
             // Wenn die Anzahl der Leben = 0 ist, führe die Funktion handleGameOver() aus
             if (live <= 0) {
+                tutorialWatched = true;
                 handleGameOver();   
             }
         }

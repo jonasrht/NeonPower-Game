@@ -27,6 +27,7 @@ let gameOver = false;
 let drawPlusLive = false;
 let starMode = false;
 let starModeCount = 0;
+let tutorialWatched = false;
 
 function init() {
     midX = canvas.width;
@@ -124,7 +125,7 @@ function background1() {
     ctx.drawImage(flower, 950, BG.y2 -81);
     ctx.drawImage(flower, 950, BG.y2 -229);
     ctx.drawImage(flower, 950, BG.y2 -377);
-    ctx.drawImage(flower, 950, BG.y2 -525);     
+    ctx.drawImage(flower, 950, BG.y2 -525);   
 
 }
 
@@ -236,7 +237,7 @@ function animate() {
     //Erstellen der Spielfigur
     car.update();
     car.draw();
-    if (frame < 500) {
+    if (frame < 500 && tutorialWatched == false) {
         drawTutorial();
     }else {
         //Erstellen der Gegner
