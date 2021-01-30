@@ -242,12 +242,6 @@ function animate() {
         // Background Methode aufrufen
         background1();
 
-        //Erstellen der Powerups
-        //if (frame < 1000 || frame > 4000) {
-
-        //}
-
-
         //Erstellen der Spielfigur
         car.update();
         car.draw();
