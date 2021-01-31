@@ -242,18 +242,13 @@ function animate() {
         // Background Methode aufrufen
         background1();
 
-        //Erstellen der Powerups
-        //if (frame < 1000 || frame > 4000) {
-        handlePowerup();
-        //}
-
-
         //Erstellen der Spielfigur
         car.update();
         car.draw();
         if (frame < 500 && tutorialWatched == false) {
             drawTutorial();
         } else {
+            handlePowerup();
             //Erstellen der Gegner
             handleEnemies();
             drawScore();
@@ -262,7 +257,7 @@ function animate() {
 
             // Leben +1 Schriftzug, bei powerup. Wird in powerups.js auf true gesetzt.
             if (drawPlusLive) {
-                ctx.fillStyle = 'green';
+                ctx.fillStyle = 'rgb(57,255,20)';
                 ctx.font = '30px pressStart2P';
                 ctx.fillText('+1', addLive.x, addLive.y);
                 if (addLive.y > 100) {
@@ -343,7 +338,7 @@ window.addEventListener('keypress', function (e) {
     // Wenn die Leertaste gedrückt wird, setze die spacePressed Variable auf true.
     if (e.code === 'Space') {
         pauseCounter++;
-        if (pauseCounter % 2) {
+        if (pauseCounter % 2 && !gameOver) {
             pause = true;
             handlePause();
         } else {

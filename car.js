@@ -1,11 +1,17 @@
 const carModel = new Image();
 carModel.src = 'assets/img/car.png';
 
+const carModelLeft = new Image();
+carModelLeft.src = 'assets/img/car-left.png';
+
+const carModelRight = new Image();
+carModelRight.src = 'assets/img/car-right.png';
+
 const carCrashModel = new Image();
-carCrashModel.src = 'assets/img/carCrash.png';
+carCrashModel.src = 'assets/img/crack_1.png';
 
 const carCrashModel2 = new Image();
-carCrashModel2.src = 'assets/img/carCrash2.png';
+carCrashModel2.src = 'assets/img/crack2.png';
 
 const carCrashModel3 = new Image();
 carCrashModel3.src = 'assets/img/carCrash3.png';
@@ -16,7 +22,7 @@ carStar.src = 'assets/img/car-star.png';
 class Car {
 
     // Konstruktor für das Auto Objekt
-    constructor(){
+    constructor() {
         this.x = 530;
         this.y = 825;
         this.vy = 0;
@@ -26,8 +32,8 @@ class Car {
     }
 
     // Methode um speed und postion zu kalkulieren
-    update(){
-
+    update() {
+        this.speed = 3;
         // Grenten
         if (this.y > canvas.height - this.height) {
             this.y -= this.speed;
@@ -40,7 +46,7 @@ class Car {
         if (this.x > canvas.width - this.width) {
             this.x -= this.speed;
         }
-        
+
         // x-Achsen grenze für die bewegung des Autos
         if (this.x > 790) {
             this.x -= this.speed;
@@ -70,7 +76,7 @@ class Car {
 
     }
 
-    draw(){
+    draw() {
         if (starMode == true) {
             ctx.drawImage(carStar, this.x, this.y, this.width, this.height);
             //ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
@@ -90,11 +96,20 @@ class Car {
                     break;
                 // Bild bei mehr als zwei Leben
                 default:
-                    ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
+                    if (aPressed) {
+                        ctx.drawImage(carModelLeft, this.x, this.y, 108, 178);
+                    } else if (dPressed) {
+                        ctx.drawImage(carModelRight, this.x, this.y, 108, 178);
+                    } else {
+                        ctx.fillStyle = 'red';
+                        ctx.fillRect(this.x, this.y, 87, 178);
+                        ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
+                    }
+
                     break;
             }
         }
-        
+
     }
 }
 
