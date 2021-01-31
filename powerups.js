@@ -6,19 +6,19 @@ powerupImg.src = 'assets/img/power_up.png';
 class Powerups {
     constructor() {
         this.x = getRandomInt(400, 790);
-        this.y = -150;
+        this.y = -1000;
         this.spriteWidth = 32;
         this.spriteHeight = 32;
-        this.speed = 3;
+        this.speed = 2;
     }
 
     draw() {
         // Powerup Bild zeichnen
-        ctx.drawImage(powerupImg, this.x, this.y, this.spriteWidth, this.spriteHeight)
+        ctx.drawImage(powerupImg, this.x, this.y, this.spriteWidth, this.spriteHeight);
         this.y += this.speed;
 
         if (this.y > canvas.height) {
-            this.y = 0 - this.spriteHeight;
+            this.y = -1000 - this.spriteHeight;
             this.x = getRandomInt(400, 790);
         }
 
@@ -53,7 +53,7 @@ class Powerups {
     }
 
     update() {
-
+        this.y += this.speed;
     }
 }
 

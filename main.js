@@ -338,7 +338,7 @@ window.addEventListener('keypress', function (e) {
     // Wenn die Leertaste gedrückt wird, setze die spacePressed Variable auf true.
     if (e.code === 'Space') {
         pauseCounter++;
-        if (pauseCounter % 2) {
+        if (pauseCounter % 2 && !gameOver) {
             pause = true;
             handlePause();
         } else {

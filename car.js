@@ -8,10 +8,10 @@ const carModelRight = new Image();
 carModelRight.src = 'assets/img/car-right.png';
 
 const carCrashModel = new Image();
-carCrashModel.src = 'assets/img/carCrash.png';
+carCrashModel.src = 'assets/img/crack_1.png';
 
 const carCrashModel2 = new Image();
-carCrashModel2.src = 'assets/img/carCrash2.png';
+carCrashModel2.src = 'assets/img/crack2.png';
 
 const carCrashModel3 = new Image();
 carCrashModel3.src = 'assets/img/carCrash3.png';
@@ -33,8 +33,8 @@ class Car {
 
     // Methode um speed und postion zu kalkulieren
     update() {
-
         // Grenten
+        master
         if (this.y > canvas.height - this.height) {
             this.y -= this.speed;
         }
@@ -101,6 +101,8 @@ class Car {
                     } else if (dPressed) {
                         ctx.drawImage(carModelRight, this.x, this.y, 108, 178);
                     } else {
+                        ctx.fillStyle = 'red';
+                        ctx.fillRect(this.x, this.y, 87, 178);
                         ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
                     }
 
