@@ -34,7 +34,8 @@ class Car {
     // Methode um speed und postion zu kalkulieren
     update() {
         this.speed = 3;
-        // Grenzend
+        // Grenzen
+
         if (this.y > canvas.height - this.height) {
             this.y -= this.speed;
         }
