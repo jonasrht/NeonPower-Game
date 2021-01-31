@@ -220,14 +220,20 @@ const addLive = {
     height: canvas.height
 }
 
+const pauseImg = new Image();
+pauseImg.src = 'assets/img/pauseImg.png'
+
 // Pause Funktion
 function handlePause() {
-    ctx.fillStyle = 'red';
-    ctx.font = '60px pressStart2P';
-    ctx.fillText('PAUSE', 480, 400);
+    // Grauer Hintergrund
+    ctx.fillStyle = ('rgba(34,34,34,0.6)');
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Pause Bild (altes Radio)
+    ctx.drawImage(pauseImg, 325, 200, 630, 512);
+    // Score anzeigen
     ctx.fillStyle = 'white';
     ctx.font = '60px pressStart2P';
-    ctx.fillText('Your score is:' + score, 120, 500);
+    ctx.fillText('Your score is:' + score, 150, 600);
     resumeGameBtn.style.display = 'flex';
 }
 
@@ -245,7 +251,7 @@ function animate() {
         //Erstellen der Spielfigur
         car.update();
         car.draw();
-        if (frame < 500 && tutorialWatched == false) {
+        if (frame < 500 && tutorialWatched == false && pause == false) {
             drawTutorial();
         } else {
             handlePowerup();
