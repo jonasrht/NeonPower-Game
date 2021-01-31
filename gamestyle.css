@@ -6,6 +6,20 @@
     width: 1278px;
     height: 1024px;
     border: 2px solid black;
+    background-image: url(assets/img/mainmenu.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#startGameBtn {
+    width: 127px;
+    height: 37px;
+    background-image: url(assets/img/Play_normal.png);
+}
+
+#startGameBtn:hover {
+    background-image: url(assets/img/Play_pressed.png);
+    cursor: pointer;
 }
 
 #canvas2 {
