@@ -1,3 +1,8 @@
+* {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #canvas1 {
     position: absolute;
     top: 50%;
@@ -6,17 +11,88 @@
     width: 1278px;
     height: 1024px;
     border: 2px solid black;
+    background-image: url(assets/img/mainmenu.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-#canvas2 {
+/* BUTTONS */
+
+#startGameBtn {
+    width: 127px;
+    height: 37px;
+    background-image: url(assets/img/Play_normal.png);
+}
+
+#startGameBtn:hover {
+    background-image: url(assets/img/Play_pressed.png);
+    cursor: pointer;
+}
+
+#pause {
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1278px;
-    height: 1024px;
-    border: 2px solid black;
+    margin-top: 150px;
+    width: 101px;
+    height: 53px;
+    background-image: url(assets/img/resume_normal.png);
+
 }
+
+#pause:hover {
+    background-image: url(assets/img/resume_pressed.png);
+    cursor: pointer;
+}
+
+#controls {
+    display: flex;
+    margin-top: 10px;
+    width: 127px;
+    height: 37px;
+    background-image: url(assets/img/Controls_normal.png);
+
+}
+
+#controls:hover {
+    background-image: url(assets/img/Controls_pressed.png);
+    cursor: pointer;
+}
+
+#credits {
+    display: flex;
+    margin-top: 10px;
+    width: 127px;
+    height: 37px;
+    background-image: url(assets/img/Credits_normal.png);
+
+}
+
+#credits:hover {
+    background-image: url(assets/img/Credits_pressed.png);
+    cursor: pointer;
+}
+
+#back {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 10px;
+    width: 59px;
+    height: 38px;
+    background-image: url(assets/img/Back_normal.png);
+
+}
+
+#back:hover {
+    background-image: url(assets/img/Back_pressed.png);
+    cursor: pointer;
+}
+
 
 body {
     background-color: black;
