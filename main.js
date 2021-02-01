@@ -13,6 +13,7 @@ const backBtn = document.querySelector('#back');
 const bgAudio = document.getElementById('bgAudio');
 const muteBtn = document.getElementById('muteBtn');
 const startEngine = document.getElementById('startEngine');
+const fullscreenBtn = document.getElementById('fullscreenBtn');
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;
@@ -209,7 +210,7 @@ function handleGameOver() {
     mainDiv.style.display = 'flex';
     mainMenu.style.display = 'none';
     mainDiv.style.marginTop = '50px';
-    backBtn.style.display = 'flex'
+    //backBtn.style.display = 'flex'
     bgAudio.pause();
     gameOver = true;
 }
@@ -232,6 +233,7 @@ function enterFullscreen(element) {
     }
 }
 
+// Vollbildmodus verlassen
 function exitFullscreen() {
     if (document.exitFullscreen) {
         document.exitFullscreen();
@@ -386,6 +388,11 @@ muteBtn.addEventListener('click', () => {
         console.log("pause");
         bgAudio.pause();
     }
+})
+
+// Vollbild Button
+fullscreenBtn.addEventListener('click', () => {
+    enterFullscreen(canvas);
 })
 
 

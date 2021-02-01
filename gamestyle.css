@@ -79,12 +79,25 @@
     margin-top: 10px;
     width: 50px;
     height: 50px;
+    cursor: pointer;
     background-image: url(assets/img/mute.png);
     background-color: aliceblue;
 }
 
 #muteBtn:active {
     background-image: url(assets/img/Credits_normal.png);
+}
+
+#fullscreenBtn {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-image: url(assets/img/fullscreenBtn.png);
+    background-color: aliceblue;
 }
 
 #back {
