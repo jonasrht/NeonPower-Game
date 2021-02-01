@@ -10,6 +10,10 @@ const mainMenu = document.querySelector('#mainMenu');
 const controlsBtn = document.querySelector('#controls');
 const creditsBtn = document.querySelector('#credits');
 const backBtn = document.querySelector('#back');
+const bgAudio = document.getElementById('bgAudio');
+const muteBtn = document.getElementById('muteBtn');
+const startEngine = document.getElementById('startEngine');
+
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;
@@ -207,6 +211,7 @@ function handleGameOver() {
     mainMenu.style.display = 'none';
     mainDiv.style.marginTop = '50px';
     backBtn.style.display = 'flex'
+    bgAudio.pause();
     gameOver = true;
 }
 
@@ -323,6 +328,9 @@ function animate() {
 startGameBtn.addEventListener('click', () => {
     init();
     animate();
+    startEngine.play();
+    bgAudio.play();
+    bgAudio.currentTime = 0;
     mainDiv.style.display = 'none';
 })
 
@@ -350,6 +358,39 @@ backBtn.addEventListener('click', () => {
     console.log("back in bus");
 })
 
+// Mute Button
+muteBtn.addEventListener('click', () => {
+    if (bgAudio.paused) {
+        console.log("play");
+        bgAudio.play();
+    } else {
+        console.log("pause");
+        bgAudio.pause();
+    }
+
+})
+
+// Credits Button
+creditsBtn.addEventListener('click', () => {
+    mainDiv.style.display = 'none';
+    mainMenu.style.display = 'none';
+    backBtn.style.display = 'flex';
+    console.log("Credits <3");
+})
+
+// Back Button
+backBtn.addEventListener('click', () => {
+    mainDiv.style.display = 'flex';
+    mainMenu.style.display = 'flex';
+    backBtn.style.display = 'none';
+    console.log("back in bus");
+})
+
+//// AUDIO
+
+window.onload = function() {
+    bgAudio.play();
+}
 
 
 // Tasten drücken abfragen
