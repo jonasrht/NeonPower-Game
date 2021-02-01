@@ -221,7 +221,26 @@ function drawScore() {
     ctx.fillText('Score: ' + score, 45, 50);
 }
 
-// Lebens Anzeige
+// Vollbildmodus starten
+function enterFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    }
+}
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+}
+
+// Vollbildmodus verlassen
 function drawLives() {
     ctx.fillStyle = 'white';
     ctx.font = '30px pressStart2P';

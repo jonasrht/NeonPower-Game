@@ -34,6 +34,7 @@ carCrashModel3.src = 'assets/img/carCrash3.png';
 const carStar = new Image();
 carStar.src = 'assets/img/car-star.png';
 
+
 const carSound = document.getElementById('carSound');
 const carStarRight = new Image();
 carStarRight.src = 'assets/img/car-star-right.png';
