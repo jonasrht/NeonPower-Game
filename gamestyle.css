@@ -39,7 +39,6 @@
     width: 101px;
     height: 53px;
     background-image: url(assets/img/resume_normal.png);
-
 }
 
 #pause:hover {
@@ -53,7 +52,6 @@
     width: 127px;
     height: 37px;
     background-image: url(assets/img/Controls_normal.png);
-
 }
 
 #controls:hover {
@@ -67,7 +65,6 @@
     width: 127px;
     height: 37px;
     background-image: url(assets/img/Credits_normal.png);
-
 }
 
 #credits:hover {
@@ -77,18 +74,18 @@
 
 #muteBtn {
     position: absolute;
-    top:82%;
-    left: 89%;
+    top: 0;
+    left: 0;
     margin-top: 10px;
     width: 50px;
     height: 50px;
     background-image: url(assets/img/mute.png);
+    background-color: aliceblue;
 }
 
 #muteBtn:active {
     background-image: url(assets/img/Credits_normal.png);
 }
-
 
 #back {
     display: none;
@@ -100,14 +97,12 @@
     width: 59px;
     height: 38px;
     background-image: url(assets/img/Back_normal.png);
-
 }
 
 #back:hover {
     background-image: url(assets/img/Back_pressed.png);
     cursor: pointer;
 }
-
 
 body {
     background-color: black;

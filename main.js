@@ -260,7 +260,7 @@ function handlePause() {
     //document.body.appendChild(myButton);
     // document.getElementById("pause").appendChild(myButton);
     pauseBtn.style.display = 'flex';
-    document.getElementById("pause").onclick = function() {
+    document.getElementById("pause").onclick = function () {
         pauseBtn.style.display = 'none';
         pause = false;
     }
@@ -331,6 +331,7 @@ startGameBtn.addEventListener('click', () => {
     bgAudio.play();
     bgAudio.currentTime = 0;
     mainDiv.style.display = 'none';
+    canvas.style.backgroundImage = 'none';
 })
 
 // Controls Button
@@ -371,7 +372,7 @@ muteBtn.addEventListener('click', () => {
 
 //// AUDIO
 
-window.onload = function() {
+window.onload = function () {
     bgAudio.play();
 }
 

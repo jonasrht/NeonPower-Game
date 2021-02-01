@@ -19,6 +19,8 @@ carCrashModel3.src = 'assets/img/carCrash3.png';
 const carStar = new Image();
 carStar.src = 'assets/img/car-star.png';
 
+const carSound = document.getElementById('carSound');
+
 class Car {
 
     // Konstruktor für das Auto Objekt
@@ -60,6 +62,7 @@ class Car {
 
         if (wPressed) {
             //console.log("y: " + this.y)
+            //carSound.play()
             this.y -= this.speed;
         }
         if (sPressed) {
