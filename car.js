@@ -108,7 +108,7 @@ class Car {
             } else if (dPressed) {
                 ctx.drawImage(carStarRight, this.x, this.y, 108, 178);
             } else {
-                ctx.drawImage(carStar, this.x, this.y, 108, 178);
+                ctx.drawImage(carStar, this.x, this.y, 87, 178);
             }
         } else {
             switch (live) {
@@ -143,8 +143,9 @@ class Car {
                     } else if (dPressed) {
                         ctx.drawImage(carModelRight, this.x, this.y, 108, 178);
                     } else {
-                        ctx.fillStyle = 'red';
-                        ctx.fillRect(this.x, this.y, 87, 178);
+                        //// Um Hitbox zu verbesserb, Zeile 147 und 148 benutzen
+                        //ctx.fillStyle = 'red';
+                        //ctx.fillRect(this.x, this.y, 87, 178);
                         ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
                     }
 
