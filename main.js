@@ -210,6 +210,7 @@ function handleGameOver() {
     mainMenu.style.display = 'none';
     mainDiv.style.marginTop = '50px';
     backBtn.style.display = 'flex'
+    bgAudio.pause();
     gameOver = true;
 }
 
@@ -327,6 +328,8 @@ startGameBtn.addEventListener('click', () => {
     init();
     animate();
     startEngine.play();
+    bgAudio.play();
+    bgAudio.currentTime = 0;
     mainDiv.style.display = 'none';
 })
 
