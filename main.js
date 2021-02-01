@@ -5,6 +5,11 @@ const ctx = canvas.getContext('2d');
 const startGameBtn = document.querySelector('#startGameBtn');
 const resumeGameBtn = document.querySelector('#resumeGameBtn');
 const mainDiv = document.querySelector('#mainDiv');
+const pauseBtn = document.querySelector('#pause');
+const mainMenu = document.querySelector('#mainMenu');
+const controlsBtn = document.querySelector('#controls');
+const creditsBtn = document.querySelector('#credits');
+const backBtn = document.querySelector('#back');
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;
@@ -189,6 +194,9 @@ function drawTutorial() {
 
 // Game Over Funktion
 function handleGameOver() {
+    // Grauer Hintergrund
+    ctx.fillStyle = ('rgba(34,34,34,0.6)');
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'red';
     ctx.font = '60px pressStart2P';
     ctx.fillText('GAME OVER', 420, 420);
@@ -196,6 +204,9 @@ function handleGameOver() {
     ctx.font = '60px pressStart2P';
     ctx.fillText('Your score is:' + score, 120, 520);
     mainDiv.style.display = 'flex';
+    mainMenu.style.display = 'none';
+    mainDiv.style.marginTop = '50px';
+    backBtn.style.display = 'flex'
     gameOver = true;
 }
 
@@ -223,6 +234,10 @@ const addLive = {
 const pauseImg = new Image();
 pauseImg.src = 'assets/img/pauseImg.png'
 
+function insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
 // Pause Funktion
 function handlePause() {
     // Grauer Hintergrund
@@ -234,7 +249,18 @@ function handlePause() {
     ctx.fillStyle = 'white';
     ctx.font = '60px pressStart2P';
     ctx.fillText('Your score is:' + score, 150, 600);
-    resumeGameBtn.style.display = 'flex';
+    //resumeGameBtn.style.display = 'flex';
+    // var myButton = document.createElement("button");
+    // myButton.id = 'startGameBtn';
+    // myButton.innerHTML = 'Resume'
+    //document.body.appendChild(myButton);
+    // document.getElementById("pause").appendChild(myButton);
+    pauseBtn.style.display = 'flex';
+    document.getElementById("pause").onclick = function() {
+        pauseBtn.style.display = 'none';
+        pause = false;
+    }
+
 }
 
 
@@ -291,14 +317,38 @@ function animate() {
     }
 }
 
+//// Menu
 
+// Play Button
 startGameBtn.addEventListener('click', () => {
     init();
     animate();
     mainDiv.style.display = 'none';
 })
 
+// Controls Button
+controlsBtn.addEventListener('click', () => {
+    mainDiv.style.display = 'none';
+    mainMenu.style.display = 'none';
+    backBtn.style.display = 'flex';
+    console.log("Controllllas");
+})
 
+// Credits Button
+creditsBtn.addEventListener('click', () => {
+    mainDiv.style.display = 'none';
+    mainMenu.style.display = 'none';
+    backBtn.style.display = 'flex';
+    console.log("Credits <3");
+})
+
+// Back Button
+backBtn.addEventListener('click', () => {
+    mainDiv.style.display = 'flex';
+    mainMenu.style.display = 'flex';
+    backBtn.style.display = 'none';
+    console.log("back in bus");
+})
 
 
 
@@ -349,7 +399,8 @@ window.addEventListener('keypress', function (e) {
             handlePause();
         } else {
             pause = false;
-            resumeGameBtn.style.display = 'none';
+            pauseBtn.style.display = 'none';
+            //resumeGameBtn.style.display = 'none';
         }
     }
 })
