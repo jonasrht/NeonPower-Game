@@ -75,6 +75,21 @@
     cursor: pointer;
 }
 
+#muteBtn {
+    position: absolute;
+    top:82%;
+    left: 89%;
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    background-image: url(assets/img/mute.png);
+}
+
+#muteBtn:active {
+    background-image: url(assets/img/Credits_normal.png);
+}
+
+
 #back {
     display: none;
     position: fixed;

@@ -10,6 +10,9 @@ const mainMenu = document.querySelector('#mainMenu');
 const controlsBtn = document.querySelector('#controls');
 const creditsBtn = document.querySelector('#credits');
 const backBtn = document.querySelector('#back');
+const bgAudio = document.getElementById('bgAudio');
+const muteBtn = document.getElementById('muteBtn');
+const startEngine = document.getElementById('startEngine');
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;
@@ -323,6 +326,7 @@ function animate() {
 startGameBtn.addEventListener('click', () => {
     init();
     animate();
+    startEngine.play();
     mainDiv.style.display = 'none';
 })
 
@@ -350,6 +354,23 @@ backBtn.addEventListener('click', () => {
     console.log("back in bus");
 })
 
+// Mute Button
+muteBtn.addEventListener('click', () => {
+    if (bgAudio.paused) {
+        console.log("play");
+        bgAudio.play();
+    } else {
+        console.log("pause");
+        bgAudio.pause();
+    }
+})
+
+
+//// AUDIO
+
+window.onload = function() {
+    bgAudio.play();
+}
 
 
 // Tasten drücken abfragen
