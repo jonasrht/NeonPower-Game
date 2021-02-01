@@ -194,8 +194,6 @@ function drawTutorial() {
     ctx.fillText('To move', 460, 500);
 }
 
-
-
 // Game Over Funktion
 function handleGameOver() {
     // Grauer Hintergrund
