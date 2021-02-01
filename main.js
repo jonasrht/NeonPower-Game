@@ -14,6 +14,7 @@ const bgAudio = document.getElementById('bgAudio');
 const muteBtn = document.getElementById('muteBtn');
 const startEngine = document.getElementById('startEngine');
 
+
 // Breite und Höhe des Spiels
 canvas.width = 1278;
 canvas.height = 1024;
@@ -366,8 +367,24 @@ muteBtn.addEventListener('click', () => {
         console.log("pause");
         bgAudio.pause();
     }
+
 })
 
+// Credits Button
+creditsBtn.addEventListener('click', () => {
+    mainDiv.style.display = 'none';
+    mainMenu.style.display = 'none';
+    backBtn.style.display = 'flex';
+    console.log("Credits <3");
+})
+
+// Back Button
+backBtn.addEventListener('click', () => {
+    mainDiv.style.display = 'flex';
+    mainMenu.style.display = 'flex';
+    backBtn.style.display = 'none';
+    console.log("back in bus");
+})
 
 //// AUDIO
 

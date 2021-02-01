@@ -1,3 +1,4 @@
+// Default Auto
 const carModel = new Image();
 carModel.src = 'assets/img/car.png';
 
@@ -6,6 +7,19 @@ carModelLeft.src = 'assets/img/car-left.png';
 
 const carModelRight = new Image();
 carModelRight.src = 'assets/img/car-right.png';
+
+// Crash Model Auto
+// const carCrackRight1 = new Image();
+// carCrackRight1.src = 'assets/img/';
+
+// const carCrackRight2 = new Image();
+// carCrackRight2.src = 'assets/img/';
+
+// const carCrackLeft1 = new Image();
+// carCrackLeft1.src = 'assets/img/';
+
+// const carCrackLeft2 = new Image();
+// carCrackLeft2.src = 'assets/img/';
 
 const carCrashModel = new Image();
 carCrashModel.src = 'assets/img/crack_1.png';
@@ -16,8 +30,15 @@ carCrashModel2.src = 'assets/img/crack2.png';
 const carCrashModel3 = new Image();
 carCrashModel3.src = 'assets/img/carCrash3.png';
 
+// Star Auto
 const carStar = new Image();
 carStar.src = 'assets/img/car-star.png';
+
+const carStarRight = new Image();
+carStarRight.src = 'assets/img/car-star-right.png';
+
+const carStarLeft = new Image();
+carStarLeft.src = 'assets/img/car-star-left.png';
 
 class Car {
 
@@ -33,7 +54,7 @@ class Car {
 
     // Methode um speed und postion zu kalkulieren
     update() {
-        this.speed = 3;
+        this.speed = 4;
         // Grenzen
 
         if (this.y > canvas.height - this.height) {
@@ -79,8 +100,13 @@ class Car {
 
     draw() {
         if (starMode == true) {
-            ctx.drawImage(carStar, this.x, this.y, this.width, this.height);
-            //ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
+            if (aPressed) {
+                ctx.drawImage(carStarLeft, this.x, this.y, 108, 178);
+            } else if (dPressed) {
+                ctx.drawImage(carStarRight, this.x, this.y, 108, 178);
+            } else {
+                ctx.drawImage(carStar, this.x, this.y, 108, 178);
+            }
         } else {
             switch (live) {
                 // Bild bei null Leben
@@ -89,11 +115,23 @@ class Car {
                     break;
                 // Bild bei einem Leben
                 case 1:
-                    ctx.drawImage(carCrashModel2, this.x, this.y, this.width, this.height);
+                    if (aPressed) {
+                        ctx.drawImage(carModelLeft, this.x, this.y, 108, 178);
+                    } else if (dPressed) {
+                        ctx.drawImage(carModelRight, this.x, this.y, 108, 178);
+                    } else {
+                        ctx.drawImage(carCrashModel2, this.x, this.y, this.width, this.height);
+                    }
                     break;
                 // Bild bei zwei Leben
                 case 2:
-                    ctx.drawImage(carCrashModel, this.x, this.y, this.width, this.height);
+                    if (aPressed) {
+                        ctx.drawImage(carModelLeft, this.x, this.y, 108, 178);
+                    } else if (dPressed) {
+                        ctx.drawImage(carModelRight, this.x, this.y, 108, 178);
+                    } else {
+                        ctx.drawImage(carCrashModel, this.x, this.y, this.width, this.height);
+                    }
                     break;
                 // Bild bei mehr als zwei Leben
                 default:
