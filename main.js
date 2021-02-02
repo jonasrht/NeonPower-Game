@@ -13,7 +13,7 @@ const backBtn = document.querySelector('#back');
 const bgAudio = document.getElementById('bgAudio');
 const muteBtn = document.getElementById('muteBtn');
 const startEngine = document.getElementById('startEngine');
-
+const fullscreenBtn = document.getElementById('fullscreenBtn');
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;
@@ -194,8 +194,6 @@ function drawTutorial() {
     ctx.fillText('To move', 460, 500);
 }
 
-
-
 // Game Over Funktion
 function handleGameOver() {
     // Grauer Hintergrund
@@ -210,7 +208,7 @@ function handleGameOver() {
     mainDiv.style.display = 'flex';
     mainMenu.style.display = 'none';
     mainDiv.style.marginTop = '50px';
-    backBtn.style.display = 'flex'
+    //backBtn.style.display = 'flex'
     bgAudio.pause();
     gameOver = true;
 }
@@ -222,7 +220,27 @@ function drawScore() {
     ctx.fillText('Score: ' + score, 45, 50);
 }
 
-// Lebens Anzeige
+// Vollbildmodus starten
+function enterFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    }
+}
+
+// Vollbildmodus verlassen
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+}
+
+// Vollbildmodus verlassen
 function drawLives() {
     ctx.fillStyle = 'white';
     ctx.font = '30px pressStart2P';
@@ -261,7 +279,7 @@ function handlePause() {
     //document.body.appendChild(myButton);
     // document.getElementById("pause").appendChild(myButton);
     pauseBtn.style.display = 'flex';
-    document.getElementById("pause").onclick = function() {
+    document.getElementById("pause").onclick = function () {
         pauseBtn.style.display = 'none';
         pause = false;
     }
@@ -332,6 +350,7 @@ startGameBtn.addEventListener('click', () => {
     bgAudio.play();
     bgAudio.currentTime = 0;
     mainDiv.style.display = 'none';
+    canvas.style.backgroundImage = 'none';
 })
 
 // Controls Button
@@ -367,28 +386,17 @@ muteBtn.addEventListener('click', () => {
         console.log("pause");
         bgAudio.pause();
     }
-
 })
 
-// Credits Button
-creditsBtn.addEventListener('click', () => {
-    mainDiv.style.display = 'none';
-    mainMenu.style.display = 'none';
-    backBtn.style.display = 'flex';
-    console.log("Credits <3");
+// Vollbild Button
+fullscreenBtn.addEventListener('click', () => {
+    enterFullscreen(canvas);
 })
 
-// Back Button
-backBtn.addEventListener('click', () => {
-    mainDiv.style.display = 'flex';
-    mainMenu.style.display = 'flex';
-    backBtn.style.display = 'none';
-    console.log("back in bus");
-})
 
 //// AUDIO
 
-window.onload = function() {
+window.onload = function () {
     bgAudio.play();
 }
 
@@ -438,10 +446,12 @@ window.addEventListener('keypress', function (e) {
         if (pauseCounter % 2 && !gameOver) {
             pause = true;
             handlePause();
+            bgAudio.pause();
         } else {
             pause = false;
             pauseBtn.style.display = 'none';
             //resumeGameBtn.style.display = 'none';
+            bgAudio.play();
         }
     }
 })
