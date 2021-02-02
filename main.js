@@ -69,6 +69,12 @@ function init() {
     enemy1.y = -40;
     enemy2.x = 700;
     enemy2.y = -40;
+
+    // Roadblock reset
+    roadblock.x = 390;
+    roadblock.y = 0;
+    roadblock1.x = 750
+    roadblock1.y = -400;
 }
 
 // Font importieren
@@ -175,6 +181,16 @@ const powerup = new Powerups();
 
 function handlePowerup() {
     powerup.draw();
+}
+
+const roadblock = new Roadblock(390, 0);
+const roadblock1 = new Roadblock(750, -400);
+
+function handleRoadblock() {
+    roadblock.draw();
+    roadblock1.draw();
+    roadblock.update();
+    roadblock1.update();
 }
 
 const wasd = new Image();
@@ -305,7 +321,11 @@ function animate() {
         } else {
             handlePowerup();
             //Erstellen der Gegner
-            handleEnemies();
+            if (score > 500 && score < 6000) {
+                handleRoadblock();
+            } else {
+                handleEnemies();
+            }
             drawScore();
             drawLives();
             score++;
