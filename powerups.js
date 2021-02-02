@@ -2,6 +2,8 @@
 const powerupImg = new Image();
 powerupImg.src = 'assets/img/power_up.png';
 
+const powerupSound = document.getElementById('powerupSound');
+
 // Power-ups Klasse
 class Powerups {
     constructor() {
@@ -25,7 +27,8 @@ class Powerups {
         const dx = car.x - this.x;
         const dy = car.y - this.y;
         if (car.y < this.y + this.spriteHeight && car.x < this.x + this.spriteWidth && car.y + car.height > this.y && car.x + car.width > this.x) {
-
+            powerupSound.play();
+            powerupSound.volume = '0.1';
             //Switch case
             switch (getRandomIntInclusive(0, 2)) {
                 case 0:
