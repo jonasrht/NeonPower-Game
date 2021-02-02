@@ -28,6 +28,10 @@ class Powerups {
         const dy = car.y - this.y;
         if (car.y < this.y + this.spriteHeight && car.x < this.x + this.spriteWidth && car.y + car.height > this.y && car.x + car.width > this.x) {
             powerupSound.play();
+<<<<<<< HEAD
+            powerupSound.volume = '0.1';
+=======
+>>>>>>> cc2f744a8a38c347eb9f3d9c23d2f1c60ba77296
             //Switch case
             switch (getRandomIntInclusive(0, 2)) {
                 case 0:

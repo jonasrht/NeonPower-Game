@@ -56,7 +56,7 @@ class Car {
 
     // Methode um speed und postion zu kalkulieren
     update() {
-        this.speed = 3;
+        this.speed = 4;
         // Grenzen
 
         if (this.y > canvas.height - this.height) {
@@ -98,7 +98,6 @@ class Car {
             //console.log("x: " + this.x)
             this.x += this.speed;
         }
-
     }
 
     draw() {
@@ -144,8 +143,8 @@ class Car {
                         ctx.drawImage(carModelRight, this.x, this.y, 108, 178);
                     } else {
                         //// Um Hitbox zu verbesserb, Zeile 147 und 148 benutzen
-                        //ctx.fillStyle = 'red';
-                        //ctx.fillRect(this.x, this.y, 87, 178);
+                        ctx.fillStyle = 'red';
+                        ctx.fillRect(this.x, this.y, 87, 160);
                         ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
                     }
 
