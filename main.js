@@ -466,10 +466,12 @@ window.addEventListener('keypress', function (e) {
         if (pauseCounter % 2 && !gameOver) {
             pause = true;
             handlePause();
+            bgAudio.pause();
         } else {
             pause = false;
             pauseBtn.style.display = 'none';
             //resumeGameBtn.style.display = 'none';
+            bgAudio.play();
         }
     }
 })
