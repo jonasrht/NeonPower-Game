@@ -210,21 +210,20 @@ function drawTutorial() {
     ctx.fillText('To move', 460, 500);
 }
 
+const gameoverImg = new Image();
+gameoverImg.src = 'assets/img/gameover.png'
+
 // Game Over Funktion
 function handleGameOver() {
     // Grauer Hintergrund
-    ctx.fillStyle = ('rgba(34,34,34,0.6)');
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'red';
-    ctx.font = '60px pressStart2P';
-    ctx.fillText('GAME OVER', 420, 420);
+    ctx.drawImage(gameoverImg, 0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'white';
     ctx.font = '60px pressStart2P';
-    ctx.fillText('Your score is:' + score, 120, 520);
+    ctx.fillText('Your score is:' + score, 120, 660);
     mainDiv.style.display = 'flex';
     mainMenu.style.display = 'none';
-    mainDiv.style.marginTop = '50px';
-    //backBtn.style.display = 'flex'
+    mainDiv.style.marginTop = '80px';
+    startGameBtn.style.marginTop = '250px';
     bgAudio.pause();
     gameOver = true;
 }
@@ -321,7 +320,7 @@ function animate() {
         } else {
             handlePowerup();
             //Erstellen der Gegner
-            if (score > 500 && score < 6000) {
+            if (frame > 5000 && frame < 6000) {
                 handleRoadblock();
             } else {
                 handleEnemies();

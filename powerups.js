@@ -29,7 +29,7 @@ class Powerups {
         if (car.y < this.y + this.spriteHeight && car.x < this.x + this.spriteWidth && car.y + car.height > this.y && car.x + car.width > this.x) {
             powerupSound.play();
             //Switch case
-            switch (getRandomIntInclusive(0, 2)) {
+            switch (getRandomIntInclusive(2, 2)) {
                 case 0:
                     console.log("0");
                     live++;
@@ -56,6 +56,8 @@ class Powerups {
 
     update() {
         this.y += this.speed;
+
+
     }
 }
 
