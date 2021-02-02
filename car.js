@@ -8,18 +8,18 @@ carModelLeft.src = 'assets/img/car-left.png';
 const carModelRight = new Image();
 carModelRight.src = 'assets/img/car-right.png';
 
-// Crash Model Auto
-// const carCrackRight1 = new Image();
-// carCrackRight1.src = 'assets/img/';
+// Crashed Auto 
+const carCrackRight1 = new Image();
+carCrackRight1.src = 'assets/img/crack_1-right.png';
 
-// const carCrackRight2 = new Image();
-// carCrackRight2.src = 'assets/img/';
+const carCrackRight2 = new Image();
+carCrackRight2.src = 'assets/img/crack_2-right.png';
 
-// const carCrackLeft1 = new Image();
-// carCrackLeft1.src = 'assets/img/';
+const carCrackLeft1 = new Image();
+carCrackLeft1.src = 'assets/img/crack_1-left.png';
 
-// const carCrackLeft2 = new Image();
-// carCrackLeft2.src = 'assets/img/';
+const carCrackLeft2 = new Image();
+carCrackLeft2.src = 'assets/img/crack_2-left.png';
 
 const carCrashModel = new Image();
 carCrashModel.src = 'assets/img/crack_1.png';
@@ -119,9 +119,9 @@ class Car {
                 // Bild bei einem Leben
                 case 1:
                     if (aPressed) {
-                        ctx.drawImage(carModelLeft, this.x, this.y, 108, 178);
+                        ctx.drawImage(carCrackLeft2, this.x, this.y, 108, 178);
                     } else if (dPressed) {
-                        ctx.drawImage(carModelRight, this.x, this.y, 108, 178);
+                        ctx.drawImage(carCrackRight2, this.x, this.y, 108, 178);
                     } else {
                         ctx.drawImage(carCrashModel2, this.x, this.y, this.width, this.height);
                     }
@@ -129,9 +129,9 @@ class Car {
                 // Bild bei zwei Leben
                 case 2:
                     if (aPressed) {
-                        ctx.drawImage(carModelLeft, this.x, this.y, 108, 178);
+                        ctx.drawImage(carCrackLeft1, this.x, this.y, 108, 178);
                     } else if (dPressed) {
-                        ctx.drawImage(carModelRight, this.x, this.y, 108, 178);
+                        ctx.drawImage(carCrackRight1, this.x, this.y, 108, 178);
                     } else {
                         ctx.drawImage(carCrashModel, this.x, this.y, this.width, this.height);
                     }
