@@ -19,8 +19,10 @@
 /* BUTTONS */
 
 #startGameBtn {
-    width: 127px;
-    height: 37px;
+    margin-top: 10px;
+    margin-left: 772px;
+    width: 508px;
+    height: 148px;
     background-image: url(assets/img/Play_normal.png);
 }
 
@@ -49,8 +51,9 @@
 #controls {
     display: flex;
     margin-top: 10px;
-    width: 127px;
-    height: 37px;
+    margin-left: 772px;
+    width: 508px;
+    height: 148px;
     background-image: url(assets/img/Controls_normal.png);
 }
 
@@ -61,9 +64,10 @@
 
 #credits {
     display: flex;
-    margin-top: 10px;
-    width: 127px;
-    height: 37px;
+    margin-top: 500px;
+    margin-left: 772px;
+    width: 508px;
+    height: 148px;
     background-image: url(assets/img/Credits_normal.png);
 }
 

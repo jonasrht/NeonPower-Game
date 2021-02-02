@@ -224,6 +224,12 @@ function handleGameOver() {
     mainMenu.style.display = 'none';
     mainDiv.style.marginTop = '80px';
     startGameBtn.style.marginTop = '250px';
+    mainDiv.style.marginTop = '50px';
+    startGameBtn.style.width = '204px';
+    startGameBtn.style.height = '74px';
+    startGameBtn.style.marginTop = '50px';
+    startGameBtn.style.marginLeft = '50px';
+    //backBtn.style.display = 'flex'
     bgAudio.pause();
     gameOver = true;
 }
@@ -297,6 +303,8 @@ function handlePause() {
     document.getElementById("pause").onclick = function () {
         pauseBtn.style.display = 'none';
         pause = false;
+        bgAudio.play();
+        bgAudio.volume = '0.1';
     }
 
 }
@@ -366,7 +374,9 @@ startGameBtn.addEventListener('click', () => {
     init();
     animate();
     startEngine.play();
+    startEngine.volume = '0.1';
     bgAudio.play();
+    bgAudio.volume = '0.1';
     bgAudio.currentTime = 0;
     mainDiv.style.display = 'none';
     canvas.style.backgroundImage = 'none';
@@ -401,6 +411,7 @@ muteBtn.addEventListener('click', () => {
     if (bgAudio.paused) {
         console.log("play");
         bgAudio.play();
+        bgAudio.volume = '0.1';
     } else {
         console.log("pause");
         bgAudio.pause();
@@ -417,6 +428,7 @@ fullscreenBtn.addEventListener('click', () => {
 
 window.onload = function () {
     bgAudio.play();
+    bgAudio.volume = '0.1';
 }
 
 
@@ -471,6 +483,7 @@ window.addEventListener('keypress', function (e) {
             pauseBtn.style.display = 'none';
             //resumeGameBtn.style.display = 'none';
             bgAudio.play();
+            bgAudio.volume = '0.1';
         }
     }
 })

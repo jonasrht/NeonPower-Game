@@ -45,7 +45,7 @@ class Enemies {
         //Kollision
         const dx = car.x - this.x;
         const dy = car.y - this.y;
-        if (car.y < this.y + this.spriteHeight && car.x < this.x + this.spriteWidth && car.y + car.height > this.y && car.x + car.width > this.x) {
+        if ((car.y) < this.y + this.spriteHeight && car.x < this.x + this.spriteWidth && (car.y) + car.height > this.y && car.x + car.width > this.x) {
             // Wenn man das Stern Powerup eingesammelt hat, dann werden bei einer Kollision keine Leben abgezogen
             if (starMode) {
 
