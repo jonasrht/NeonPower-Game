@@ -14,6 +14,9 @@ const bgAudio = document.getElementById('bgAudio');
 const muteBtn = document.getElementById('muteBtn');
 const startEngine = document.getElementById('startEngine');
 const fullscreenBtn = document.getElementById('fullscreenBtn');
+const tryAgain = document.getElementById('tryAgain');
+const lauter = document.getElementById('Lauter');
+const leiser = document.getElementById('Leiser');
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;
@@ -325,7 +328,8 @@ function handlePause() {
         pauseBtn.style.display = 'none';
         pause = false;
         bgAudio.play();
-        bgAudio.volume = '0.1';
+        leiser.style.display = 'none';
+        lauter.style.display = 'none';
     }
 
 }
@@ -395,11 +399,14 @@ startGameBtn.addEventListener('click', () => {
     startEngine.play();
     startEngine.volume = '0.1';
     bgAudio.play();
-    bgAudio.volume = '0.1';
     bgAudio.currentTime = 0;
     mainDiv.style.display = 'none';
     canvas.style.backgroundImage = 'none';
 })
+
+// Controlscreen hinzufügen
+const controlScreen = new Image();
+controlScreen.src = 'assets/img/Controls_screen.png';
 
 // Controls Button
 controlsBtn.addEventListener('click', () => {
@@ -407,6 +414,7 @@ controlsBtn.addEventListener('click', () => {
     mainMenu.style.display = 'none';
     backBtn.style.display = 'flex';
     console.log("Controllllas");
+    ctx.drawImage(controlScreen, 0, 0, canvas.width, canvas.height);
 })
 
 // Credits Button
@@ -425,12 +433,30 @@ backBtn.addEventListener('click', () => {
     console.log("back in bus");
 })
 
+lauter.addEventListener('click', () => {
+    bgAudio.volume += 0.1;
+})
+leiser.addEventListener('click', () => {
+    bgAudio.volume -= 0.1;
+})
+
+//TryAgain Button
+tryAgain.addEventListener('click', () => {
+    init();
+    animate();
+    startEngine.play();
+    startEngine.volume = '0.1';
+    bgAudio.play();
+    bgAudio.currentTime = 0;
+    tryAgain.style.display = 'none';
+    canvas.style.backgroundImage = 'none';
+})
+
 // Mute Button
 muteBtn.addEventListener('click', () => {
     if (bgAudio.paused) {
         console.log("play");
         bgAudio.play();
-        bgAudio.volume = '0.1';
     } else {
         console.log("pause");
         bgAudio.pause();
@@ -446,7 +472,6 @@ fullscreenBtn.addEventListener('click', () => {
 
 window.onload = function () {
     bgAudio.play();
-    bgAudio.volume = '0.1';
 }
 
 // Tasten drücken abfragen
@@ -492,15 +517,21 @@ window.addEventListener('keypress', function (e) {
     if (e.code === 'Space') {
         pauseCounter++;
         if (pauseCounter % 2 && !gameOver) {
-            pause = true;
-            handlePause();
-            bgAudio.pause();
+            if(frame > 500) {
+                pause = true;
+                handlePause();
+                bgAudio.pause();
+                leiser.style.display = 'flex';
+                lauter.style.display = 'flex';
+            }
         } else {
             pause = false;
             pauseBtn.style.display = 'none';
+            leiser.style.display = 'none';
+            lauter.style.display = 'none';
             //resumeGameBtn.style.display = 'none';
             bgAudio.play();
-            bgAudio.volume = '0.1';
+            
         }
     }
 })

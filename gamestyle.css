@@ -20,7 +20,7 @@
 /* BUTTONS */
 
 #startGameBtn {
-    margin-top: 10px;
+    margin-top: 500px;
     margin-left: 772px;
     width: 508px;
     height: 148px;
@@ -49,6 +49,49 @@
     cursor: pointer;
 }
 
+#tryAgain {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 150px;
+    width: 428px;
+    height: 128px;
+    background-image: url(assets/img/Try_normal.png);
+}
+
+#tryAgain:hover {
+    background-image: url(assets/img/Try_pressed.png);
+    cursor: pointer;
+}
+
+#Lauter {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -115px;
+    margin-left: 230px;
+    width: 32px;
+    height: 32px;
+    background-image: url(assets/img/Lauter.png);
+}
+
+#Leiser {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -60px;
+    margin-left: 230px;
+    width: 32px;
+    height: 32px;
+    background-image: url(assets/img/Leiser.png);
+}
+
 #controls {
     display: flex;
     margin-top: 10px;
@@ -65,7 +108,7 @@
 
 #credits {
     display: flex;
-    margin-top: 500px;
+    margin-top: 10px;
     margin-left: 772px;
     width: 508px;
     height: 148px;
