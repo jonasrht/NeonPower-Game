@@ -241,7 +241,8 @@ function handleGameOver() {
     ctx.fillStyle = 'white';
     ctx.font = '60px pressStart2P';
     ctx.fillText('Your score is:' + score, 120, 660);
-    mainDiv.style.display = 'flex';
+    tryAgain.style.display = 'flex';
+    tryAgain.style.marginTop = '250px';
     mainMenu.style.display = 'none';
     mainDiv.style.marginTop = '80px';
     startGameBtn.style.marginTop = '250px';
@@ -517,7 +518,7 @@ window.addEventListener('keypress', function (e) {
     if (e.code === 'Space') {
         pauseCounter++;
         if (pauseCounter % 2 && !gameOver) {
-            if(frame > 500) {
+            if (frame > 500) {
                 pause = true;
                 handlePause();
                 bgAudio.pause();
@@ -531,7 +532,7 @@ window.addEventListener('keypress', function (e) {
             lauter.style.display = 'none';
             //resumeGameBtn.style.display = 'none';
             bgAudio.play();
-            
+
         }
     }
 })
