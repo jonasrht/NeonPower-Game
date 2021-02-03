@@ -143,7 +143,7 @@ function background1() {
     ctx.drawImage(building4, 3, BG.y2 + 100);
 
     // Blumen
-    ctx.drawImage(flower, 950, BG.y1);
+    ctx.drawImage(flower, 950, BG.y1 + 490);
 
 }
 
