@@ -30,7 +30,7 @@ class Powerups {
             powerupSound.play();
             powerupSound.volume = '0.1';
             //Switch case
-            switch (getRandomIntInclusive(0, 2)) {
+            switch (getRandomIntInclusive(2, 2)) {
                 case 0:
                     console.log("0");
                     live++;
@@ -57,6 +57,8 @@ class Powerups {
 
     update() {
         this.y += this.speed;
+
+
     }
 }
 

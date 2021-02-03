@@ -32,7 +32,7 @@ carCrashModel3.src = 'assets/img/carCrash3.png';
 
 // Star Auto
 const carStar = new Image();
-carStar.src = 'assets/img/car-star.png';
+carStar.src = 'assets/img/carStarSprite.png';
 
 
 const carSound = document.getElementById('carSound');
@@ -48,6 +48,9 @@ class Car {
     constructor() {
         this.x = 530;
         this.y = 825;
+        this.frameX = 0;
+        this.frameY = 0;
+        this.carFrame = 0;
         this.vy = 0;
         this.speed = 5;
         this.width = 87;
@@ -56,7 +59,19 @@ class Car {
 
     // Methode um speed und postion zu kalkulieren
     update() {
-        this.speed = 4;
+        this.speed = 3;
+
+        // Animation
+        if (frame % 10 == 0) {
+            this.carFrame++;
+            if (this.carFrame >= 6) {
+                this.carFrame = 0;
+                this.frameX = 0;
+            } else {
+                this.frameX++;
+            }
+        }
+
         // Grenzen
 
         if (this.y > canvas.height - this.height) {
@@ -98,17 +113,19 @@ class Car {
             //console.log("x: " + this.x)
             this.x += this.speed;
         }
+
     }
 
     draw() {
         if (starMode == true) {
-            if (aPressed) {
-                ctx.drawImage(carStarLeft, this.x, this.y, 108, 178);
-            } else if (dPressed) {
-                ctx.drawImage(carStarRight, this.x, this.y, 108, 178);
-            } else {
-                ctx.drawImage(carStar, this.x, this.y, 87, 178);
-            }
+            // if (aPressed) {
+            //     ctx.drawImage(carStarLeft, this.x, this.y, 108, 178);
+            // } else if (dPressed) {
+            //     ctx.drawImage(carStarRight, this.x, this.y, 108, 178);
+            // } else {
+            //ctx.drawImage(carStar, this.x, this.y, 87, 178);
+            ctx.drawImage(carStar, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height)
+            //}
         } else {
             switch (live) {
                 // Bild bei null Leben
@@ -143,8 +160,8 @@ class Car {
                         ctx.drawImage(carModelRight, this.x, this.y, 108, 178);
                     } else {
                         //// Um Hitbox zu verbesserb, Zeile 147 und 148 benutzen
-                        ctx.fillStyle = 'red';
-                        ctx.fillRect(this.x, this.y, 87, 160);
+                        //ctx.fillStyle = 'red';
+                        //ctx.fillRect(this.x, this.y, 87, 178);
                         ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
                     }
 

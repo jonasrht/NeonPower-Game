@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeonPower</title>
     <link rel="stylesheet" href="gamestyle.css">
+    <script src="p5.js"></script>
+    <script src="lights.js"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 
@@ -14,6 +16,7 @@
     <audio src="assets/audio/startEngine.mp3" id="startEngine"></audio>
     <audio src="assets/audio/pointup.m4a" id="powerupSound"></audio>
     <audio src="assets/audio/car02.m4a" id="carSound"></audio>
+    <audio src="assets/audio/buttonSound.wav" id="carSound"></audio>
     <canvas id="canvas1"></canvas>
     <div id="mainDiv">
         <div id="btnCemter">
@@ -25,10 +28,14 @@
             <div id="mute"></div>
         </div>
     </div>
+    <!-- Buttons -->
     <div id="back"></div>
     <div id="pause"></div>
     <div id="muteBtn"></div>
     <div id="fullscreenBtn"></div>
+    <div id="tryAgain"></div>
+    <div id="Lauter"></div>
+    <div id="Leiser"></div>
 
     <script src="car.js"></script>
     <script src="Enemies.js"></script>
