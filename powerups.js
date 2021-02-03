@@ -16,8 +16,12 @@ class Powerups {
 
     draw() {
         // Powerup Bild zeichnen
+        ctx.save();
+        ctx.shadowColor = 'rgb(255,105,180)';
+        ctx.shadowBlur = 15;
         ctx.drawImage(powerupImg, this.x, this.y, this.spriteWidth, this.spriteHeight);
         this.y += this.speed;
+        ctx.restore();
 
         if (this.y > canvas.height) {
             this.y = -1000 - this.spriteHeight;

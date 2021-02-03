@@ -162,7 +162,11 @@ class Car {
                         //// Um Hitbox zu verbesserb, Zeile 147 und 148 benutzen
                         //ctx.fillStyle = 'red';
                         //ctx.fillRect(this.x, this.y, 87, 178);
+                        //ctx.save();
+                        //ctx.translate(this.x, this.y);
+                        // ctx.rotate(90);
                         ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
+                        //ctx.restore();
                     }
 
                     break;
