@@ -40,7 +40,7 @@ const carStarRight = new Image();
 carStarRight.src = 'assets/img/car-star-right.png';
 
 const carStarLeft = new Image();
-carStarLeft.src = 'assets/img/car-star-left.png';
+carStarLeft.src = 'assets/img/carStarSpriteLeft.png';
 
 class Car {
 
@@ -119,13 +119,12 @@ class Car {
     draw() {
         if (starMode == true) {
             // if (aPressed) {
-            //     ctx.drawImage(carStarLeft, this.x, this.y, 108, 178);
-            // } else if (dPressed) {
             //     ctx.drawImage(carStarRight, this.x, this.y, 108, 178);
+            // } else if (dPressed) {
+            //     ctx.drawImage(carStarLeft, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
             // } else {
-            //ctx.drawImage(carStar, this.x, this.y, 87, 178);
             ctx.drawImage(carStar, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
-            //}
+            // }
         } else {
             switch (live) {
                 // Bild bei null Leben
@@ -161,16 +160,12 @@ class Car {
                     } else {
                         //// Um Hitbox zu verbesserb, Zeile 147 und 148 benutzen
                         //ctx.fillStyle = 'red';
-                        //ctx.fillRect(this.x, this.y, 87, 178);
-                        //ctx.save();
-                        //ctx.translate(this.x, this.y);
-                        // ctx.rotate(90);
                         ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
-                        //ctx.restore();
-                    }
 
+                    }
                     break;
             }
+
         }
 
     }
