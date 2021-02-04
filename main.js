@@ -221,16 +221,21 @@ const gameoverImg = new Image();
 gameoverImg.src = 'assets/img/gameover.png'
 
 function fade() {
+    ctx.save();
+    ctx.shadowColor = 'red';
+    ctx.shadowBlur = 15;
     // Deckkraft = ga 
     ctx.globalAlpha = ga;
     // Gameover background image
     ctx.drawImage(gameoverImg, 0, 0, canvas.width, canvas.height);
-
+    ctx.fillStyle = 'white';
+    ctx.font = '60px pressStart2P';
+    ctx.fillText('Your score is:' + score, 120, 660);
     // Deckkraft erhöhen
     ga += 0.01;
-
     if (ga >= 1.0) setTimeout(function () { console.log("done"); }, 8000);
     else requestAnimationFrame(fade);
+    ctx.restore();
 }
 
 
@@ -240,13 +245,10 @@ function fade() {
 function handleGameOver() {
     // Grauer Hintergrund
     fade();
-    ctx.save();
-    ctx.globalAlpha = 0.1;
+    //ctx.globalAlpha = 0.1;
     // ctx.drawImage(gameoverImg, 0, 0, canvas.width, canvas.height);
     ctx.restore();
-    ctx.fillStyle = 'white';
-    ctx.font = '60px pressStart2P';
-    ctx.fillText('Your score is:' + score, 120, 660);
+
     var input = document.createElement("input");
     input.setAttribute('type', 'text');
     canvas.appendChild(input);
@@ -476,6 +478,7 @@ tryAgain.addEventListener('click', () => {
     bgAudio.currentTime = 0;
     tryAgain.style.display = 'none';
     canvas.style.backgroundImage = 'none';
+    txtName.style.display = 'none';
 })
 
 // Mute Button

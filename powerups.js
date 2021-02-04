@@ -41,7 +41,6 @@ class Powerups {
                 ctx.drawImage(speedAnimation, this.frameX * 61, this.frameY * 59, 61, 59, this.x, this.y, 61, 59);
                 break;
             case 2:
-
                 ctx.save();
                 ctx.shadowColor = 'rgb(255,105,180)';
                 ctx.shadowBlur = 15;
