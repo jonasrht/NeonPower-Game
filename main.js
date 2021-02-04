@@ -47,6 +47,7 @@ let pause = false;
 let pauseCounter = 0;
 var ga = 0.0;
 let powerUpNum = getRandomIntInclusive(0, 2);;
+let masterVolume = 0.1;
 
 function init() {
     midX = canvas.width;
@@ -341,6 +342,9 @@ function handlePause() {
     ctx.fillStyle = 'white';
     ctx.font = '60px pressStart2P';
     ctx.fillText('Your score is:' + score, 150, 600);
+    // Volume
+    ctx.font = '13px pressStart2P';
+    ctx.fillText('VOL:' + masterVolume, 820, 430);
     pauseBtn.style.display = 'flex';
     document.getElementById("pause").onclick = function () {
         pauseBtn.style.display = 'none';
@@ -395,6 +399,7 @@ function animate() {
             if (starMode) {
                 if (starModeCount == 500) {
                     starModeCount = 0;
+                    bgAudio.playbackRate = 1.0;
                     starMode = false;
                 }
                 starModeCount++;
@@ -415,8 +420,9 @@ startGameBtn.addEventListener('click', () => {
     init();
     animate();
     startEngine.play();
-    startEngine.volume = '0.1';
+    startEngine.volume = masterVolume;
     bgAudio.play();
+    bgAudio.volume = masterVolume;
     bgAudio.currentTime = 0;
     mainDiv.style.display = 'none';
     canvas.style.backgroundImage = 'none';
@@ -452,10 +458,12 @@ backBtn.addEventListener('click', () => {
 })
 
 lauter.addEventListener('click', () => {
-    bgAudio.volume += 0.1;
+    masterVolume += 0.1;
+    console.log(masterVolume);
 })
 leiser.addEventListener('click', () => {
-    bgAudio.volume -= 0.1;
+    masterVolume -= 0.1;
+    console.log(masterVolume);
 })
 
 //TryAgain Button
@@ -463,7 +471,7 @@ tryAgain.addEventListener('click', () => {
     init();
     animate();
     startEngine.play();
-    startEngine.volume = '0.1';
+    startEngine.volume = masterVolume;
     bgAudio.play();
     bgAudio.currentTime = 0;
     tryAgain.style.display = 'none';
@@ -490,6 +498,7 @@ fullscreenBtn.addEventListener('click', () => {
 
 window.onload = function () {
     bgAudio.play();
+    bgAudio.volume = masterVolume;
 }
 
 // Tasten drücken abfragen

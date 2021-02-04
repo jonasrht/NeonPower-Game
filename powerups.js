@@ -77,6 +77,7 @@ class Powerups {
                     break;
                 case 2:
                     powerupSound.play();
+                    bgAudio.playbackRate = 1.5;
                     starMode = true;
                 default:
                     break;
