@@ -18,6 +18,8 @@ const tryAgain = document.getElementById('tryAgain');
 const lauter = document.getElementById('Lauter');
 const leiser = document.getElementById('Leiser');
 const txtName = document.getElementById('txtName');
+const repairSound = document.getElementById('repairSound');
+
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;

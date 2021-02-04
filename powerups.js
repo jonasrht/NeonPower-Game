@@ -62,21 +62,21 @@ class Powerups {
         const dx = car.x - this.x;
         const dy = car.y - this.y;
         if (car.y < this.y + this.spriteHeight && car.x < this.x + this.spriteWidth && car.y + car.height > this.y && car.x + car.width > this.x) {
-            powerupSound.play();
             powerupSound.volume = '0.1';
             //Switch case
             switch (powerUpNum) {
                 case 0:
-                    console.log("0");
                     live++;
+                    repairSound.play();
+                    repairSound.currentTime = '0.1';
                     drawPlusLive = true;
                     break;
                 case 1:
-                    console.log("1");
+                    powerupSound.play();
                     car.speed++;
                     break;
                 case 2:
-                    console.log("2");
+                    powerupSound.play();
                     starMode = true;
                 default:
                     break;
