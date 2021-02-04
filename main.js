@@ -48,6 +48,7 @@ let pauseCounter = 0;
 var ga = 0.0;
 let powerUpNum = getRandomIntInclusive(0, 2);;
 let masterVolume = 0.1;
+let hitted = false;
 
 function init() {
     midX = canvas.width;
@@ -403,6 +404,14 @@ function animate() {
                     starModeCount = 0;
                     bgAudio.playbackRate = 1.0;
                     starMode = false;
+                }
+                starModeCount++;
+            }
+
+            if (hitted) {
+                if (starModeCount == 200) {
+                    starModeCount = 0;
+                    hitted = false;
                 }
                 starModeCount++;
             }

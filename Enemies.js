@@ -49,8 +49,11 @@ class Enemies {
             // Wenn man das Stern Powerup eingesammelt hat, dann werden bei einer Kollision keine Leben abgezogen
             if (starMode) {
 
+            } else if (hitted) {
+
             } else {
                 live--;
+                hitted = true;
             }
 
             // Enemies verschwinden nach einer Kollision
