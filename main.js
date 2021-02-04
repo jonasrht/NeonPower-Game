@@ -17,6 +17,7 @@ const fullscreenBtn = document.getElementById('fullscreenBtn');
 const tryAgain = document.getElementById('tryAgain');
 const lauter = document.getElementById('Lauter');
 const leiser = document.getElementById('Leiser');
+const txtName = document.getElementById('txtName');
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;
@@ -43,6 +44,7 @@ let tutorialWatched = false;
 let pause = false;
 let pauseCounter = 0;
 var ga = 0.0;
+let powerUpNum = getRandomIntInclusive(0, 2);;
 
 function init() {
     midX = canvas.width;
@@ -182,6 +184,7 @@ const powerup = new Powerups();
 
 function handlePowerup() {
     powerup.draw();
+    powerup.update();
 }
 
 const roadblock = new Roadblock(390, 0);
@@ -241,6 +244,9 @@ function handleGameOver() {
     ctx.fillStyle = 'white';
     ctx.font = '60px pressStart2P';
     ctx.fillText('Your score is:' + score, 120, 660);
+    var input = document.createElement("input");
+    input.setAttribute('type', 'text');
+    canvas.appendChild(input);
     tryAgain.style.display = 'flex';
     tryAgain.style.marginTop = '250px';
     mainMenu.style.display = 'none';
@@ -252,10 +258,19 @@ function handleGameOver() {
     startGameBtn.style.marginTop = '50px';
     startGameBtn.style.marginLeft = '50px';
     // backBtn.style.display = 'flex'
+
+    // Highscore save
+    txtName.style.display = 'flex';
+    var logStream = fs.createWriteStream('/highscore.txt', { 'flags': 'w' });
+    logStream.write(this.score);
+
+    console.log('f1')
     bgAudio.pause();
     console.log(ga);
     gameOver = true;
 }
+
+
 
 // Score anzeige
 function drawScore() {

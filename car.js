@@ -124,7 +124,7 @@ class Car {
             //     ctx.drawImage(carStarRight, this.x, this.y, 108, 178);
             // } else {
             //ctx.drawImage(carStar, this.x, this.y, 87, 178);
-            ctx.drawImage(carStar, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height)
+            ctx.drawImage(carStar, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
             //}
         } else {
             switch (live) {

@@ -2,26 +2,57 @@
 const powerupImg = new Image();
 powerupImg.src = 'assets/img/power_up.png';
 
+const speedAnimation = new Image();
+speedAnimation.src = 'assets/img/speedanimation.png';
+
+const oneUpImg = new Image();
+oneUpImg.src = 'assets/img/oneupicontest.png';
+
 const powerupSound = document.getElementById('powerupSound');
 
 // Power-ups Klasse
 class Powerups {
+
     constructor() {
         this.x = getRandomInt(400, 790);
         this.y = -1000;
+        this.frameX = 0;
+        this.frameY = 0;
         this.spriteWidth = 32;
         this.spriteHeight = 32;
         this.speed = 2;
+        this.powerUpNum = getRandomIntInclusive(1, 1);
+        this.animationFrame = 0;
     }
 
     draw() {
-        // Powerup Bild zeichnen
-        ctx.save();
-        ctx.shadowColor = 'rgb(255,105,180)';
-        ctx.shadowBlur = 15;
-        ctx.drawImage(powerupImg, this.x, this.y, this.spriteWidth, this.spriteHeight);
-        this.y += this.speed;
-        ctx.restore();
+        console.log("Number: " + powerUpNum);
+        switch (powerUpNum) {
+            case 0:
+                // Powerup Bild zeichnen
+                ctx.save();
+                ctx.shadowColor = 'rgb(255,105,180)';
+                ctx.shadowBlur = 15;
+                ctx.drawImage(oneUpImg, this.x, this.y, 64, 64);
+                ctx.restore();
+                break;
+            case 1:
+                //ctx.drawImage(speedAnimation, this.x, this.y, 61, 59);
+                ctx.drawImage(speedAnimation, this.frameX * 61, this.frameY * 59, 61, 59, this.x, this.y, 61, 59);
+                break;
+            case 2:
+
+                ctx.save();
+                ctx.shadowColor = 'rgb(255,105,180)';
+                ctx.shadowBlur = 15;
+                ctx.drawImage(powerupImg, this.x, this.y, this.spriteWidth, this.spriteHeight);
+                ctx.restore();
+                break;
+
+            default:
+                break;
+        }
+
 
         if (this.y > canvas.height) {
             this.y = -1000 - this.spriteHeight;
@@ -34,7 +65,7 @@ class Powerups {
             powerupSound.play();
             powerupSound.volume = '0.1';
             //Switch case
-            switch (getRandomIntInclusive(2, 2)) {
+            switch (powerUpNum) {
                 case 0:
                     console.log("0");
                     live++;
@@ -54,6 +85,7 @@ class Powerups {
             this.x = 9000;
             this.y = 9000;
             this.x = getRandomInt(400, 790);
+            powerUpNum = getRandomIntInclusive(0, 2);
             //this.y = getRandomInt(0, 790);
             //this.draw();
         }
@@ -61,7 +93,16 @@ class Powerups {
 
     update() {
         this.y += this.speed;
-
+        if (frame % 10 == 0) {
+            this.animationFrame++;
+            //console.log(animationFrame);
+            if (this.animationFrame >= 3) {
+                this.animationFrame = 0;
+                this.frameX = 0;
+            } else {
+                this.frameX++;
+            }
+        }
 
     }
 }
