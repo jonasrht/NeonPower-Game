@@ -27,6 +27,7 @@ const blockCrashSound = document.getElementById('blockCrashSound');
 const exitFullscreenBtn = document.getElementById('exitFullscreenBtn');
 const volUpBtn = document.getElementById('volUp');
 const volDownBtn = document.getElementById('volDown');
+const buttonSound = document.getElementById('buttonSound');
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;
@@ -56,6 +57,8 @@ var ga = 0.0;
 let powerUpNum = getRandomIntInclusive(0, 2);;
 let masterVolume = 0.1;
 let hitted = false;
+
+buttonSound.volume = masterVolume;
 
 // Werte reset nach gameover
 function init() {
@@ -456,6 +459,7 @@ controlScreen.src = 'assets/img/Controls_screen.png';
 
 // Controls Button
 controlsBtn.addEventListener('click', () => {
+    buttonSound.play();
     mainDiv.style.display = 'none';
     mainMenu.style.display = 'none';
     backBtn.style.display = 'flex';
@@ -465,6 +469,7 @@ controlsBtn.addEventListener('click', () => {
 
 // Credits Button
 creditsBtn.addEventListener('click', () => {
+    buttonSound.play();
     mainDiv.style.display = 'none';
     mainMenu.style.display = 'none';
     backBtn.style.display = 'flex';
@@ -473,6 +478,7 @@ creditsBtn.addEventListener('click', () => {
 
 // Back Button
 backBtn.addEventListener('click', () => {
+    buttonSound.play();
     mainDiv.style.display = '';
     mainMenu.style.display = '';
     backBtn.style.display = 'none';
@@ -481,10 +487,12 @@ backBtn.addEventListener('click', () => {
 })
 
 lauter.addEventListener('click', () => {
+    buttonSound.play();
     masterVolume += 0.1;
     console.log(masterVolume);
 })
 leiser.addEventListener('click', () => {
+    buttonSound.play();
     masterVolume -= 0.1;
     console.log(masterVolume);
 })
@@ -504,6 +512,7 @@ tryAgain.addEventListener('click', () => {
 
 // Mute Button
 muteBtn.addEventListener('click', () => {
+    buttonSound.play();
     if (bgAudio.paused) {
         console.log("play");
         bgAudio.play();
@@ -513,8 +522,21 @@ muteBtn.addEventListener('click', () => {
     }
 })
 
+volUpBtn.addEventListener('click', () => {
+    buttonSound.play();
+    masterVolume += 0.1;
+    console.log(masterVolume);
+})
+
+volDownBtn.addEventListener('click', () => {
+    buttonSound.play();
+    masterVolume -= 0.1;
+    console.log(masterVolume);
+})
+
 // Vollbild Button
 fullscreenBtn.addEventListener('click', () => {
+    buttonSound.play();
     fullscreenBtn.style.display = 'none';
     exitFullscreenBtn.style.display = 'block';
     enterFullscreen(gameDiv);
@@ -522,6 +544,7 @@ fullscreenBtn.addEventListener('click', () => {
 
 // exitFullscreen
 exitFullscreenBtn.addEventListener('click', () => {
+    buttonSound.play();
     fullscreenBtn.style.display = 'block';
     exitFullscreenBtn.style.display = 'none';
     exitFullscreen(gameDiv);
