@@ -4,6 +4,7 @@
 }
 
 #canvas1 {
+    z-index: -1;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -124,8 +125,8 @@
     top: 0;
     left: 0;
     margin-top: 10px;
-    width: 50px;
-    height: 50px;
+    width: 64px;
+    height: 64px;
     cursor: pointer;
     background-image: url(assets/img/mute.png);
     background-color: aliceblue;
@@ -140,8 +141,8 @@
     top: 10%;
     left: 0;
     margin-top: 10px;
-    width: 50px;
-    height: 50px;
+    width: 64px;
+    height: 64px;
     cursor: pointer;
     background-image: url(assets/img/fullscreenBtn.png);
     background-color: aliceblue;

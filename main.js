@@ -11,6 +11,7 @@ const controlsBtn = document.querySelector('#controls');
 const creditsBtn = document.querySelector('#credits');
 const backBtn = document.querySelector('#back');
 const bgAudio = document.getElementById('bgAudio');
+const btnAudio = document.getElementById('btnSound');
 const muteBtn = document.getElementById('muteBtn');
 const startEngine = document.getElementById('startEngine');
 const fullscreenBtn = document.getElementById('fullscreenBtn');
@@ -42,6 +43,7 @@ let starModeCount = 0;
 let tutorialWatched = false;
 let pause = false;
 let pauseCounter = 0;
+var ga = 0.0;
 
 function init() {
     midX = canvas.width;
@@ -61,7 +63,7 @@ function init() {
     drawPlusLive = false;
     starMode = false;
     starModeCount = 0;
-
+    ga = 0.0;
     // Car reset
     car.x = 530;
     car.y = 825;
@@ -142,10 +144,7 @@ function background1() {
     ctx.drawImage(building4, 3, BG.y2 + 100);
 
     // Blumen
-    ctx.drawImage(flower, 950, BG.y2 - 81);
-    ctx.drawImage(flower, 950, BG.y2 - 229);
-    ctx.drawImage(flower, 950, BG.y2 - 377);
-    ctx.drawImage(flower, 950, BG.y2 - 525);
+    ctx.drawImage(flower, 950, BG.y1 + 490);
 
 }
 
@@ -216,28 +215,58 @@ function drawTutorial() {
 const gameoverImg = new Image();
 gameoverImg.src = 'assets/img/gameover.png'
 
+function fade() {
+    // Deckkraft = ga 
+    ctx.globalAlpha = ga;
+    // Gameover background image
+    ctx.drawImage(gameoverImg, 0, 0, canvas.width, canvas.height);
+
+    // Deckkraft erhöhen
+    ga += 0.01;
+
+    if (ga >= 1.0) setTimeout(function () { console.log("done"); }, 8000);
+    else requestAnimationFrame(fade);
+}
+
+
+
+
 // Game Over Funktion
 function handleGameOver() {
     // Grauer Hintergrund
-    ctx.drawImage(gameoverImg, 0, 0, canvas.width, canvas.height);
+    fade();
+    ctx.save();
+    ctx.globalAlpha = 0.1;
+    // ctx.drawImage(gameoverImg, 0, 0, canvas.width, canvas.height);
+    ctx.restore();
     ctx.fillStyle = 'white';
     ctx.font = '60px pressStart2P';
     ctx.fillText('Your score is:' + score, 120, 660);
     tryAgain.style.display = 'flex';
+    tryAgain.style.marginTop = '250px';
     mainMenu.style.display = 'none';
     mainDiv.style.marginTop = '80px';
-    tryAgain.style.marginTop = '250px';
+    startGameBtn.style.marginTop = '250px';
     mainDiv.style.marginTop = '50px';
-    //backBtn.style.display = 'flex'
+    startGameBtn.style.width = '204px';
+    startGameBtn.style.height = '74px';
+    startGameBtn.style.marginTop = '50px';
+    startGameBtn.style.marginLeft = '50px';
+    // backBtn.style.display = 'flex'
     bgAudio.pause();
+    console.log(ga);
     gameOver = true;
 }
 
 // Score anzeige
 function drawScore() {
+    ctx.save();
+    ctx.shadowColor = 'rgb(255,105,180)';
+    ctx.shadowBlur = 15;
     ctx.fillStyle = 'white';
     ctx.font = '30px pressStart2P';
     ctx.fillText('Score: ' + score, 45, 50);
+    ctx.restore();
 }
 
 // Vollbildmodus starten
@@ -262,9 +291,13 @@ function exitFullscreen() {
 
 // Vollbildmodus verlassen
 function drawLives() {
+    ctx.save();
+    ctx.shadowColor = 'rgb(255,105,180)';
+    ctx.shadowBlur = 15;
     ctx.fillStyle = 'white';
     ctx.font = '30px pressStart2P';
     ctx.fillText('Lives: ' + live, 45, 100);
+    ctx.restore();
 }
 
 const addLive = {
@@ -292,12 +325,6 @@ function handlePause() {
     ctx.fillStyle = 'white';
     ctx.font = '60px pressStart2P';
     ctx.fillText('Your score is:' + score, 150, 600);
-    //resumeGameBtn.style.display = 'flex';
-    // var myButton = document.createElement("button");
-    // myButton.id = 'startGameBtn';
-    // myButton.innerHTML = 'Resume'
-    //document.body.appendChild(myButton);
-    // document.getElementById("pause").appendChild(myButton);
     pauseBtn.style.display = 'flex';
     document.getElementById("pause").onclick = function () {
         pauseBtn.style.display = 'none';
@@ -305,6 +332,7 @@ function handlePause() {
         bgAudio.play();
         leiser.style.display = 'none';
         lauter.style.display = 'none';
+        btnAudio.play();
     }
 
 }
@@ -316,10 +344,8 @@ function handlePause() {
 function animate() {
     if (!pause) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         // Background Methode aufrufen
         background1();
-
         //Erstellen der Spielfigur
         car.update();
         car.draw();
@@ -379,6 +405,7 @@ startGameBtn.addEventListener('click', () => {
     bgAudio.currentTime = 0;
     mainDiv.style.display = 'none';
     canvas.style.backgroundImage = 'none';
+    btnAudio.play();
 })
 
 // Controlscreen hinzufügen
@@ -392,6 +419,7 @@ controlsBtn.addEventListener('click', () => {
     backBtn.style.display = 'flex';
     console.log("Controllllas");
     ctx.drawImage(controlScreen, 0, 0, canvas.width, canvas.height);
+    btnAudio.play();
 })
 
 // Credits Button
@@ -400,6 +428,7 @@ creditsBtn.addEventListener('click', () => {
     mainMenu.style.display = 'none';
     backBtn.style.display = 'flex';
     console.log("Credits <3");
+    btnAudio.play();
 })
 
 // Back Button
@@ -408,13 +437,16 @@ backBtn.addEventListener('click', () => {
     mainMenu.style.display = 'flex';
     backBtn.style.display = 'none';
     console.log("back in bus");
+    btnAudio.play();
 })
 
 lauter.addEventListener('click', () => {
     bgAudio.volume += 0.1;
+    btnAudio.play();
 })
 leiser.addEventListener('click', () => {
     bgAudio.volume -= 0.1;
+    btnAudio.play();
 })
 
 //TryAgain Button
@@ -427,6 +459,7 @@ tryAgain.addEventListener('click', () => {
     bgAudio.currentTime = 0;
     tryAgain.style.display = 'none';
     canvas.style.backgroundImage = 'none';
+    btnAudio.play();
 })
 
 // Mute Button
@@ -437,21 +470,21 @@ muteBtn.addEventListener('click', () => {
     } else {
         console.log("pause");
         bgAudio.pause();
+        btnAudio.play();
     }
 })
 
 // Vollbild Button
 fullscreenBtn.addEventListener('click', () => {
     enterFullscreen(canvas);
+    btnAudio.play();
 })
-
 
 //// AUDIO
 
 window.onload = function () {
     bgAudio.play();
 }
-
 
 // Tasten drücken abfragen
 window.addEventListener('keydown', function (e) {
@@ -496,7 +529,7 @@ window.addEventListener('keypress', function (e) {
     if (e.code === 'Space') {
         pauseCounter++;
         if (pauseCounter % 2 && !gameOver) {
-            if(frame > 500) {
+            if (frame > 500) {
                 pause = true;
                 handlePause();
                 bgAudio.pause();
@@ -510,7 +543,7 @@ window.addEventListener('keypress', function (e) {
             lauter.style.display = 'none';
             //resumeGameBtn.style.display = 'none';
             bgAudio.play();
-            
+
         }
     }
 })
