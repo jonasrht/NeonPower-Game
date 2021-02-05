@@ -80,6 +80,7 @@ function init() {
     starMode = false;
     starModeCount = 0;
     ga = 0.0;
+    speedBar.frameX = 0;
     // Car reset
     car.x = 530;
     car.y = 825;
@@ -250,7 +251,31 @@ function fade() {
     ctx.restore();
 }
 
+const speedBarImg = new Image();
+speedBarImg.src = 'assets/img/speedBar.png'
 
+const speedBar = {
+    y: 650,
+    y2: -canvas.height,
+    x: 1150,
+    frameX: 0,
+    frameY: 0,
+    width: 203,
+    height: 972
+}
+
+// Bild und Schrift der Speedbar anzeige unten links
+function handleSpeedBar() {
+    ctx.save();
+    ctx.globalAlpha = 0.8;
+    ctx.shadowColor = 'rgb(255,105,180)';
+    ctx.shadowBlur = 15;
+    ctx.fillStyle = 'white';
+    ctx.font = '30px pressStart2P';
+    ctx.fillText('Speed', 1100, 1000);
+    ctx.drawImage(speedBarImg, speedBar.frameX * speedBar.width, speedBar.frameY * speedBar.height, speedBar.width, speedBar.height, speedBar.x, speedBar.y, speedBar.width / 3, speedBar.height / 3);
+    ctx.restore();
+}
 
 
 // Game Over Funktion
@@ -385,6 +410,7 @@ function animate() {
         //Erstellen der Spielfigur
         car.update();
         car.draw();
+        handleSpeedBar();
         if (frame < 500 && tutorialWatched == false && pause == false) {
             drawTutorial();
         } else {
@@ -397,6 +423,7 @@ function animate() {
             }
             drawScore();
             drawLives();
+
             score++;
 
             // Leben +1 Schriftzug, bei powerup. Wird in powerups.js auf true gesetzt.
