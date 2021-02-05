@@ -40,7 +40,10 @@ const carStarRight = new Image();
 carStarRight.src = 'assets/img/car-star-right.png';
 
 const carStarLeft = new Image();
-carStarLeft.src = 'assets/img/car-star-left.png';
+carStarLeft.src = 'assets/img/carStarSpriteLeft.png';
+
+const hittedImg = new Image();
+hittedImg.src = 'assets/img/hittedImg.png';
 
 class Car {
 
@@ -62,15 +65,30 @@ class Car {
         this.speed = 3;
 
         // Animation
-        if (frame % 10 == 0) {
-            this.carFrame++;
-            if (this.carFrame >= 6) {
-                this.carFrame = 0;
-                this.frameX = 0;
-            } else {
-                this.frameX++;
+        if (starMode) {
+            if (frame % 10 == 0) {
+                this.carFrame++;
+                if (this.carFrame >= 6) {
+                    this.carFrame = 0;
+                    this.frameX = 0;
+                } else {
+                    this.frameX++;
+                }
             }
         }
+
+        if (hitted) {
+            if (frame % 10 == 0) {
+                this.carFrame++;
+                if (this.carFrame >= 3) {
+                    this.carFrame = 0;
+                    this.frameX = 0;
+                } else {
+                    this.frameX++;
+                }
+            }
+        }
+
 
         // Grenzen
 
@@ -118,14 +136,9 @@ class Car {
 
     draw() {
         if (starMode == true) {
-            // if (aPressed) {
-            //     ctx.drawImage(carStarLeft, this.x, this.y, 108, 178);
-            // } else if (dPressed) {
-            //     ctx.drawImage(carStarRight, this.x, this.y, 108, 178);
-            // } else {
-            //ctx.drawImage(carStar, this.x, this.y, 87, 178);
-            ctx.drawImage(carStar, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height)
-            //}
+            ctx.drawImage(carStar, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+        } else if (hitted) {
+            ctx.drawImage(hittedImg, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
         } else {
             switch (live) {
                 // Bild bei null Leben
@@ -161,16 +174,12 @@ class Car {
                     } else {
                         //// Um Hitbox zu verbesserb, Zeile 147 und 148 benutzen
                         //ctx.fillStyle = 'red';
-                        //ctx.fillRect(this.x, this.y, 87, 178);
-                        //ctx.save();
-                        //ctx.translate(this.x, this.y);
-                        // ctx.rotate(90);
                         ctx.drawImage(carModel, this.x, this.y, this.width, this.height);
-                        //ctx.restore();
-                    }
 
+                    }
                     break;
             }
+
         }
 
     }

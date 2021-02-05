@@ -11,13 +11,15 @@ const controlsBtn = document.querySelector('#controls');
 const creditsBtn = document.querySelector('#credits');
 const backBtn = document.querySelector('#back');
 const bgAudio = document.getElementById('bgAudio');
-const btnAudio = document.getElementById('btnSound');
 const muteBtn = document.getElementById('muteBtn');
 const startEngine = document.getElementById('startEngine');
 const fullscreenBtn = document.getElementById('fullscreenBtn');
 const tryAgain = document.getElementById('tryAgain');
 const lauter = document.getElementById('Lauter');
 const leiser = document.getElementById('Leiser');
+const txtName = document.getElementById('txtName');
+const repairSound = document.getElementById('repairSound');
+
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;
@@ -44,6 +46,9 @@ let tutorialWatched = false;
 let pause = false;
 let pauseCounter = 0;
 var ga = 0.0;
+let powerUpNum = getRandomIntInclusive(0, 2);;
+let masterVolume = 0.1;
+let hitted = false;
 
 function init() {
     midX = canvas.width;
@@ -183,6 +188,7 @@ const powerup = new Powerups();
 
 function handlePowerup() {
     powerup.draw();
+    powerup.update();
 }
 
 const roadblock = new Roadblock(390, 0);
@@ -216,16 +222,21 @@ const gameoverImg = new Image();
 gameoverImg.src = 'assets/img/gameover.png'
 
 function fade() {
+    ctx.save();
+    ctx.shadowColor = 'red';
+    ctx.shadowBlur = 15;
     // Deckkraft = ga 
     ctx.globalAlpha = ga;
     // Gameover background image
     ctx.drawImage(gameoverImg, 0, 0, canvas.width, canvas.height);
-
+    ctx.fillStyle = 'white';
+    ctx.font = '60px pressStart2P';
+    ctx.fillText('Your score is:' + score, 120, 660);
     // Deckkraft erhöhen
     ga += 0.01;
-
     if (ga >= 1.0) setTimeout(function () { console.log("done"); }, 8000);
     else requestAnimationFrame(fade);
+    ctx.restore();
 }
 
 
@@ -235,13 +246,13 @@ function fade() {
 function handleGameOver() {
     // Grauer Hintergrund
     fade();
-    ctx.save();
-    ctx.globalAlpha = 0.1;
+    //ctx.globalAlpha = 0.1;
     // ctx.drawImage(gameoverImg, 0, 0, canvas.width, canvas.height);
     ctx.restore();
-    ctx.fillStyle = 'white';
-    ctx.font = '60px pressStart2P';
-    ctx.fillText('Your score is:' + score, 120, 660);
+
+    var input = document.createElement("input");
+    input.setAttribute('type', 'text');
+    canvas.appendChild(input);
     tryAgain.style.display = 'flex';
     tryAgain.style.marginTop = '250px';
     mainMenu.style.display = 'none';
@@ -253,10 +264,19 @@ function handleGameOver() {
     startGameBtn.style.marginTop = '50px';
     startGameBtn.style.marginLeft = '50px';
     // backBtn.style.display = 'flex'
+
+    // Highscore save
+    txtName.style.display = 'flex';
+    var logStream = fs.createWriteStream('/highscore.txt', { 'flags': 'w' });
+    logStream.write(this.score);
+
+    console.log('f1')
     bgAudio.pause();
     console.log(ga);
     gameOver = true;
 }
+
+
 
 // Score anzeige
 function drawScore() {
@@ -325,6 +345,9 @@ function handlePause() {
     ctx.fillStyle = 'white';
     ctx.font = '60px pressStart2P';
     ctx.fillText('Your score is:' + score, 150, 600);
+    // Volume
+    ctx.font = '13px pressStart2P';
+    ctx.fillText('VOL:' + masterVolume, 820, 430);
     pauseBtn.style.display = 'flex';
     document.getElementById("pause").onclick = function () {
         pauseBtn.style.display = 'none';
@@ -332,7 +355,6 @@ function handlePause() {
         bgAudio.play();
         leiser.style.display = 'none';
         lauter.style.display = 'none';
-        btnAudio.play();
     }
 
 }
@@ -380,7 +402,16 @@ function animate() {
             if (starMode) {
                 if (starModeCount == 500) {
                     starModeCount = 0;
+                    bgAudio.playbackRate = 1.0;
                     starMode = false;
+                }
+                starModeCount++;
+            }
+
+            if (hitted) {
+                if (starModeCount == 200) {
+                    starModeCount = 0;
+                    hitted = false;
                 }
                 starModeCount++;
             }
@@ -400,12 +431,12 @@ startGameBtn.addEventListener('click', () => {
     init();
     animate();
     startEngine.play();
-    startEngine.volume = '0.1';
+    startEngine.volume = masterVolume;
     bgAudio.play();
+    bgAudio.volume = masterVolume;
     bgAudio.currentTime = 0;
     mainDiv.style.display = 'none';
     canvas.style.backgroundImage = 'none';
-    btnAudio.play();
 })
 
 // Controlscreen hinzufügen
@@ -419,7 +450,6 @@ controlsBtn.addEventListener('click', () => {
     backBtn.style.display = 'flex';
     console.log("Controllllas");
     ctx.drawImage(controlScreen, 0, 0, canvas.width, canvas.height);
-    btnAudio.play();
 })
 
 // Credits Button
@@ -428,25 +458,24 @@ creditsBtn.addEventListener('click', () => {
     mainMenu.style.display = 'none';
     backBtn.style.display = 'flex';
     console.log("Credits <3");
-    btnAudio.play();
 })
 
 // Back Button
 backBtn.addEventListener('click', () => {
-    mainDiv.style.display = 'flex';
-    mainMenu.style.display = 'flex';
+    mainDiv.style.display = '';
+    mainMenu.style.display = '';
     backBtn.style.display = 'none';
     console.log("back in bus");
-    btnAudio.play();
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 })
 
 lauter.addEventListener('click', () => {
-    bgAudio.volume += 0.1;
-    btnAudio.play();
+    masterVolume += 0.1;
+    console.log(masterVolume);
 })
 leiser.addEventListener('click', () => {
-    bgAudio.volume -= 0.1;
-    btnAudio.play();
+    masterVolume -= 0.1;
+    console.log(masterVolume);
 })
 
 //TryAgain Button
@@ -454,12 +483,12 @@ tryAgain.addEventListener('click', () => {
     init();
     animate();
     startEngine.play();
-    startEngine.volume = '0.1';
+    startEngine.volume = masterVolume;
     bgAudio.play();
     bgAudio.currentTime = 0;
     tryAgain.style.display = 'none';
     canvas.style.backgroundImage = 'none';
-    btnAudio.play();
+    txtName.style.display = 'none';
 })
 
 // Mute Button
@@ -470,20 +499,19 @@ muteBtn.addEventListener('click', () => {
     } else {
         console.log("pause");
         bgAudio.pause();
-        btnAudio.play();
     }
 })
 
 // Vollbild Button
 fullscreenBtn.addEventListener('click', () => {
     enterFullscreen(canvas);
-    btnAudio.play();
 })
 
 //// AUDIO
 
 window.onload = function () {
     bgAudio.play();
+    bgAudio.volume = masterVolume;
 }
 
 // Tasten drücken abfragen
@@ -528,7 +556,7 @@ window.addEventListener('keypress', function (e) {
     // Wenn die Leertaste gedrückt wird, setze die spacePressed Variable auf true.
     if (e.code === 'Space') {
         pauseCounter++;
-        if (pauseCounter % 2 && !gameOver) {
+        if (pauseCounter % 2 && live > 0) {
             if (frame > 500) {
                 pause = true;
                 handlePause();
@@ -543,7 +571,6 @@ window.addEventListener('keypress', function (e) {
             lauter.style.display = 'none';
             //resumeGameBtn.style.display = 'none';
             bgAudio.play();
-
         }
     }
 })
