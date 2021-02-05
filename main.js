@@ -50,6 +50,7 @@ let powerUpNum = getRandomIntInclusive(0, 2);;
 let masterVolume = 0.1;
 let hitted = false;
 
+// Werte reset nach gameover
 function init() {
     midX = canvas.width;
     midY = canvas.height;
