@@ -176,11 +176,6 @@
     cursor: pointer;
 }
 
-body {
-    background-color: black;
-    background-image: src('../assets/img/background.jpg');
-}
-
 #mainDiv {
     position: fixed;
     top: 50%;
