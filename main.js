@@ -44,7 +44,7 @@ let angle = 0;
 let hue = 0;
 let frame = 0;
 let score = 0;
-let live = 3;
+let live = 30;
 let gameSpeed = 2;
 let gameOver = false;
 let drawPlusLive = false;
@@ -276,68 +276,68 @@ function handleSpeedBar() {
     ctx.restore();
 }
 
-function sendData() {
-    // const data = new FormData();
+// function sendData() {
+//     // const data = new FormData();
 
-    // data.append("name", 55);
+//     // data.append("name", 55);
 
-    // xhr.send(data);
-    const toSend = {
-        name: "test",
-        score: 500
-    };
+//     // xhr.send(data);
+//     const toSend = {
+//         name: "test",
+//         score: 500
+//     };
 
-    const jsonString = JSON.stringify(toSend);
-    console.log(jsonString);
+//     const jsonString = JSON.stringify(toSend);
+//     console.log(jsonString);
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "receive.php", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(jsonString);
-}
+//     const xhr = new XMLHttpRequest();
+//     xhr.open("POST", "receive.php", true);
+//     xhr.setRequestHeader("Content-Type", "application/json");
+//     xhr.send(jsonString);
+// }
 
 
-const scoreboardBody = document.getElementById("rows");
+// const scoreboardBody = document.getElementById("rows");
 
-function addData() {
-    const request = new XMLHttpRequest();
+// function addData() {
+//     const request = new XMLHttpRequest();
 
-    request.open("get", "data/scoreboard.json");
-    request.onload = () => {
-        try {
-            const json = JSON.parse(request.responseText);
-            popScore(json);
-        } catch (e) {
-            console.warn("Konnte keinen score laden :(");
-        }
+//     request.open("get", "data/scoreboard.json");
+//     request.onload = () => {
+//         try {
+//             const json = JSON.parse(request.responseText);
+//             popScore(json);
+//         } catch (e) {
+//             console.warn("Konnte keinen score laden :(");
+//         }
 
-    };
-    request.send();
-}
+//     };
+//     request.send();
+// }
 
-document.addEventListener("DOMContentLoaded", () => { sendData(); });
+// document.addEventListener("DOMContentLoaded", () => { sendData(); });
 
-function popScore(json) {
-    //console.log(json);
+// function popScore(json) {
+//     //console.log(json);
 
-    // Bestehende Daten aus der Tabelle löschen
-    while (scoreboardBody.firstChild) {
-        scoreboardBody.removeChild(scoreboardBody.firstChild);
-    }
+//     // Bestehende Daten aus der Tabelle löschen
+//     while (scoreboardBody.firstChild) {
+//         scoreboardBody.removeChild(scoreboardBody.firstChild);
+//     }
 
-    json.forEach((row) => {
-        const tr = document.createElement("tr");
-        row.forEach((cell) => {
-            const td = document.createElement("td");
-            td.textContent = cell;
-            tr.appendChild(td);
-        });
+//     json.forEach((row) => {
+//         const tr = document.createElement("tr");
+//         row.forEach((cell) => {
+//             const td = document.createElement("td");
+//             td.textContent = cell;
+//             tr.appendChild(td);
+//         });
 
-        scoreboardBody.appendChild(tr);
-    });
-}
+//         scoreboardBody.appendChild(tr);
+//     });
+// }
 
-document.addEventListener("DOMContentLoaded", () => { addData(); });
+// document.addEventListener("DOMContentLoaded", () => { addData(); });
 
 
 

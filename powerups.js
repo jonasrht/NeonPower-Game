@@ -72,8 +72,10 @@ class Powerups {
                 case 1:
                     speedUpSound.play();
                     speedUpSound.volume = 0.3;
-                    if (speedBar.frameX >= 5) {
-                        speedBar.frameX = 5;
+                    console.log(speedBar.frameX);
+                    if (speedBar.frameX > 3) {
+
+                        speedBar.frameX = 4;
                     } else {
                         speedBar.frameX++;
                     }
@@ -90,7 +92,7 @@ class Powerups {
             this.x = 9000;
             this.y = 9000;
             this.x = getRandomInt(400, 790);
-            powerUpNum = getRandomIntInclusive(0, 2);
+            powerUpNum = getRandomIntInclusive(1, 1);
             //this.y = getRandomInt(0, 790);
             //this.draw();
         }
