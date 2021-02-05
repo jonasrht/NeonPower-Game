@@ -18,28 +18,29 @@
     <audio src="assets/audio/car02.m4a" id="carSound"></audio>
     <audio src="assets/audio/buttonSound.wav" id="carSound"></audio>
     <audio src="assets/audio/repairsound.mp3" id="repairSound"></audio>
-    <canvas id="canvas1"></canvas>
-    <div id="mainDiv">
-        <div id="btnCemter">
-            <div id="startGameBtn"></div>
+    <div id="gameDiv">
+        <canvas id="canvas1"></canvas>
+        <div id="mainDiv">
+            <div id="btnCemter">
+                <div id="startGameBtn"></div>
+            </div>
+            <div id="mainMenu">
+                <div id="controls"></div>
+                <div id="credits"></div>
+                <div id="mute"></div>
+            </div>
         </div>
-        <div id="mainMenu">
-            <div id="controls"></div>
-            <div id="credits"></div>
-            <div id="mute"></div>
-        </div>
+        <!-- Buttons -->
+        <div id="back"></div>
+        <div id="pause"></div>
+        <div id="muteBtn"></div>
+        <div id="fullscreenBtn"></div>
+        <div id="tryAgain"></div>
+        <div id="Lauter"></div>
+        <div id="Leiser"></div>
+
+        <input type="text" id="txtName" placeholder="Enter your name" />
     </div>
-    <!-- Buttons -->
-    <div id="back"></div>
-    <div id="pause"></div>
-    <div id="muteBtn"></div>
-    <div id="fullscreenBtn"></div>
-    <div id="tryAgain"></div>
-    <div id="Lauter"></div>
-    <div id="Leiser"></div>
-
-    <input type="text" id="txtName" placeholder="Enter your name" />
-
     <script src="car.js"></script>
     <script src="Enemies.js"></script>
     <script src="roadblock.js"></script>

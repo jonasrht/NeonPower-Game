@@ -19,6 +19,7 @@ const lauter = document.getElementById('Lauter');
 const leiser = document.getElementById('Leiser');
 const txtName = document.getElementById('txtName');
 const repairSound = document.getElementById('repairSound');
+const gameDiv = document.getElementById('gameDiv');
 
 
 // Breite und Höhe des Spiels
@@ -467,7 +468,7 @@ backBtn.addEventListener('click', () => {
     mainMenu.style.display = '';
     backBtn.style.display = 'none';
     console.log("back in bus");
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 })
 
 lauter.addEventListener('click', () => {
@@ -505,7 +506,7 @@ muteBtn.addEventListener('click', () => {
 
 // Vollbild Button
 fullscreenBtn.addEventListener('click', () => {
-    enterFullscreen(canvas);
+    enterFullscreen(gameDiv);
 })
 
 //// AUDIO
