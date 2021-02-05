@@ -23,7 +23,10 @@ const gameDiv = document.getElementById('gameDiv');
 const policeSound = document.getElementById('policeSound');
 const speedUpSound = document.getElementById('speedUp');
 const crashSound = document.getElementById('crashSound');
-const blockCrashSound = document.getElementById('blockCrashSound')
+const blockCrashSound = document.getElementById('blockCrashSound');
+const exitFullscreenBtn = document.getElementById('exitFullscreenBtn');
+const volUpBtn = document.getElementById('volUp');
+const volDownBtn = document.getElementById('volDown');
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;
@@ -512,7 +515,16 @@ muteBtn.addEventListener('click', () => {
 
 // Vollbild Button
 fullscreenBtn.addEventListener('click', () => {
+    fullscreenBtn.style.display = 'none';
+    exitFullscreenBtn.style.display = 'block';
     enterFullscreen(gameDiv);
+})
+
+// exitFullscreen
+exitFullscreenBtn.addEventListener('click', () => {
+    fullscreenBtn.style.display = 'block';
+    exitFullscreenBtn.style.display = 'none';
+    exitFullscreen(gameDiv);
 })
 
 //// AUDIO

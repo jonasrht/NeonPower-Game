@@ -148,15 +148,49 @@
 }
 
 #fullscreenBtn {
+    display: block;
     position: absolute;
-    top: 10%;
+    top: 21%;
     left: 0;
     margin-top: 10px;
     width: 50px;
     height: 50px;
     cursor: pointer;
     background-image: url(assets/img/fullscreenBtn.png);
-    background-color: aliceblue;
+}
+
+#exitFullscreenBtn {
+    display: none;
+    position: absolute;
+    top: 21%;
+    left: 0;
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-image: url(assets/img/screenklein.png);
+}
+
+#volDown {
+    position: absolute;
+    top: 14%;
+    left: 0;
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-image: url(assets/img/leiserneon.png);
+}
+
+#volUp {
+    position: absolute;
+    top: 7%;
+    left: 0;
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-image: url(assets/img/lauterneon.png);
 }
 
 #back {
