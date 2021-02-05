@@ -72,7 +72,7 @@ class Powerups {
                     break;
                 case 1:
                     speedUpSound.play();
-                    speedUpSound.volume = masterVolume;
+                    speedUpSound.volume = 0.3;
                     speedBar.frameX++;
                     car.speed++;
                     break;

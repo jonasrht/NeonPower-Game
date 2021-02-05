@@ -256,8 +256,7 @@ speedBarImg.src = 'assets/img/speedBar.png'
 
 const speedBar = {
     y: 650,
-    y2: -canvas.height,
-    x: 1150,
+    x: 1148,
     frameX: 0,
     frameY: 0,
     width: 203,
