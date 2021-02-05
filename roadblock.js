@@ -29,6 +29,8 @@ class Roadblock {
 
             } else {
                 live--;
+                blockCrashSound.play();
+                blockCrashSound.volume = masterVolume;
             }
 
             // Wenn die Anzahl der Leben = 0 ist, führe die Funktion handleGameOver() aus

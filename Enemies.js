@@ -54,6 +54,8 @@ class Enemies {
             } else {
                 live--;
                 hitted = true;
+                crashSound.play();
+                crashSound.volume = masterVolume;
             }
 
             // Enemies verschwinden nach einer Kollision

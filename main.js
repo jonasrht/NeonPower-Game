@@ -20,7 +20,10 @@ const leiser = document.getElementById('Leiser');
 const txtName = document.getElementById('txtName');
 const repairSound = document.getElementById('repairSound');
 const gameDiv = document.getElementById('gameDiv');
-
+const policeSound = document.getElementById('policeSound');
+const speedUpSound = document.getElementById('speedUp');
+const crashSound = document.getElementById('crashSound');
+const blockCrashSound = document.getElementById('blockCrashSound')
 
 // Breite und Höhe des Spiels
 canvas.width = 1278;
@@ -246,6 +249,9 @@ function fade() {
 
 // Game Over Funktion
 function handleGameOver() {
+    // Police sound
+    policeSound.play();
+    policeSound.volume = masterVolume;
     // Grauer Hintergrund
     fade();
     //ctx.globalAlpha = 0.1;
@@ -256,7 +262,7 @@ function handleGameOver() {
     input.setAttribute('type', 'text');
     canvas.appendChild(input);
     tryAgain.style.display = 'flex';
-    tryAgain.style.marginTop = '250px';
+    tryAgain.style.marginTop = '150px';
     mainMenu.style.display = 'none';
     mainDiv.style.marginTop = '80px';
     startGameBtn.style.marginTop = '250px';

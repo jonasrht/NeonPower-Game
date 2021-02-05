@@ -71,7 +71,8 @@ class Powerups {
                     drawPlusLive = true;
                     break;
                 case 1:
-                    powerupSound.play();
+                    speedUpSound.play();
+                    speedUpSound.volume = masterVolume;
                     car.speed++;
                     break;
                 case 2:
@@ -103,7 +104,7 @@ class Powerups {
                 this.frameX++;
             }
         }
-        
+
     }
 }
 
