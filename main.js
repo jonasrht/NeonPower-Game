@@ -213,7 +213,7 @@ function drawTutorial() {
     ctx.fillText('Press', 525, 80);
 
     // "W A S D" Bild
-    ctx.drawImage(wasd, 420, 100);
+    ctx.drawImage(wasd, 450, 100, 440, 288);
 
     ctx.fillStyle = 'white';
     ctx.font = '60px pressStart2P';
