@@ -31,10 +31,9 @@
 /* BUTTONS */
 
 #startGameBtn {
-    margin-top: 500px;
-    margin-left: 772px;
-    width: 508px;
-    height: 148px;
+    margin-top: 200px;
+    width: 254px;
+    height: 74px;
     background-image: url(assets/img/Play_normal.png);
 }
 
@@ -67,8 +66,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     margin-top: 150px;
-    width: 428px;
-    height: 128px;
+    width: 214px;
+    height: 64px;
     background-image: url(assets/img/Try_normal.png);
 }
 
@@ -105,10 +104,8 @@
 
 #controls {
     display: flex;
-    margin-top: 10px;
-    margin-left: 772px;
-    width: 508px;
-    height: 148px;
+    width: 254px;
+    height: 74px;
     background-image: url(assets/img/Controls_normal.png);
 }
 
@@ -117,12 +114,15 @@
     cursor: pointer;
 }
 
+#mainMenu {
+    margin-top: 10px;
+    margin-left: 600px;
+}
+
 #credits {
     display: flex;
-    margin-top: 10px;
-    margin-left: 772px;
-    width: 508px;
-    height: 148px;
+    width: 254px;
+    height: 74px;
     background-image: url(assets/img/Credits_normal.png);
 }
 
@@ -165,10 +165,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: 380px;
-    margin-left: -400px;
-    width: 118px;
-    height: 76px;
+    margin-top: 280px;
+    margin-left: -300px;
+    width: 57px;
+    height: 38px;
     background-image: url(assets/img/Back_normal.png);
 }
 
