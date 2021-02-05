@@ -349,7 +349,7 @@ function handlePause() {
     ctx.fillText('Your score is:' + score, 150, 600);
     // Volume
     ctx.font = '13px pressStart2P';
-    ctx.fillText('VOL:' + masterVolume, 820, 430);
+    ctx.fillText('VOL:' + Math.floor(masterVolume), 820, 430);
     pauseBtn.style.display = 'flex';
     document.getElementById("pause").onclick = function () {
         pauseBtn.style.display = 'none';
