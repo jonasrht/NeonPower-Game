@@ -276,6 +276,70 @@ function handleSpeedBar() {
     ctx.restore();
 }
 
+function sendData() {
+    // const data = new FormData();
+
+    // data.append("name", 55);
+
+    // xhr.send(data);
+    const toSend = {
+        name: "test",
+        score: 500
+    };
+
+    const jsonString = JSON.stringify(toSend);
+    console.log(jsonString);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "receive.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(jsonString);
+}
+
+
+const scoreboardBody = document.getElementById("rows");
+
+function addData() {
+    const request = new XMLHttpRequest();
+
+    request.open("get", "data/scoreboard.json");
+    request.onload = () => {
+        try {
+            const json = JSON.parse(request.responseText);
+            popScore(json);
+        } catch (e) {
+            console.warn("Konnte keinen score laden :(");
+        }
+
+    };
+    request.send();
+}
+
+document.addEventListener("DOMContentLoaded", () => { sendData(); });
+
+function popScore(json) {
+    //console.log(json);
+
+    // Bestehende Daten aus der Tabelle löschen
+    while (scoreboardBody.firstChild) {
+        scoreboardBody.removeChild(scoreboardBody.firstChild);
+    }
+
+    json.forEach((row) => {
+        const tr = document.createElement("tr");
+        row.forEach((cell) => {
+            const td = document.createElement("td");
+            td.textContent = cell;
+            tr.appendChild(td);
+        });
+
+        scoreboardBody.appendChild(tr);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => { addData(); });
+
+
 
 // Game Over Funktion
 function handleGameOver() {

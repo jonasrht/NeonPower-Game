@@ -39,13 +39,28 @@
         <div id="muteBtn"></div>
         <div id="fullscreenBtn"></div>
         <div id="exitFullscreenBtn"></div>
-        <div id="tryAgain"></div>
+        <div id="tryAgain" onclick="addData()"></div>
         <div id="volUp"></div>
         <div id="volDown"></div>
         <div id="Lauter"></div>
         <div id="Leiser"></div>
 
         <input type="text" id="txtName" placeholder="Enter your name" />
+    </div>
+
+    <div id="scoreboard">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+            <tbody id="rows">
+                <tr>
+                    <td>Jonas</td>
+                    <td>2000</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <script src="car.js"></script>
     <script src="Enemies.js"></script>
