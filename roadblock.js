@@ -11,7 +11,7 @@ class Roadblock {
     }
 
     draw() {
-        console.log(this.spriteWidth);
+        // console.log(this.spriteWidth);
         ctx.drawImage(roadblockImg, this.x, this.y, this.spriteWidth, this.spriteHeight);
     }
 

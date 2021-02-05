@@ -26,7 +26,6 @@ class Powerups {
     }
 
     draw() {
-        console.log("Number: " + powerUpNum);
         switch (powerUpNum) {
             case 0:
                 // Powerup Bild zeichnen
@@ -73,7 +72,11 @@ class Powerups {
                 case 1:
                     speedUpSound.play();
                     speedUpSound.volume = 0.3;
-                    speedBar.frameX++;
+                    if (speedBar.frameX >= 5) {
+                        speedBar.frameX = 5;
+                    } else {
+                        speedBar.frameX++;
+                    }
                     car.speed++;
                     break;
                 case 2:

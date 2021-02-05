@@ -417,6 +417,10 @@ function animate() {
             //Erstellen der Gegner
             if (frame > 5000 && frame < 6000) {
                 handleRoadblock();
+                enemy1.x = 500;
+                enemy1.y = -1000;
+                enemy2.x = 700;
+                enemy2.y = -1000;
             } else {
                 handleEnemies();
             }
@@ -457,7 +461,15 @@ function animate() {
             }
         }
         // Wenn Gameover, dann unterbreche den Animation loop
-        frame++;
+        if (frame > 10000) {
+            frame = 501;
+            roadblock.x = 390;
+            roadblock.y = 0;
+            roadblock1.x = 750
+            roadblock1.y = -400;
+        } else {
+            frame++;
+        }
     }
     if (!gameOver) {
         requestAnimationFrame(animate);
