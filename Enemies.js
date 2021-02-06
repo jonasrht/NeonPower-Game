@@ -52,7 +52,7 @@ class Enemies {
             } else if (hitted) {
 
             } else {
-                //live--;
+                live--;
                 hitted = true;
                 crashSound.play();
                 crashSound.volume = masterVolume;
