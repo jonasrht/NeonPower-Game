@@ -92,7 +92,7 @@ class Powerups {
             this.x = 9000;
             this.y = 9000;
             this.x = getRandomInt(400, 790);
-            powerUpNum = getRandomIntInclusive(1, 1);
+            powerUpNum = getRandomIntInclusive(0, 2);
             //this.y = getRandomInt(0, 790);
             //this.draw();
         }
