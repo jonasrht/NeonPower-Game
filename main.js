@@ -569,6 +569,10 @@ controlsBtn.addEventListener('click', () => {
     ctx.drawImage(controlScreen, 0, 0, canvas.width, canvas.height);
 })
 
+// Credits Bild hinzufügen
+const creditsImg = new Image();
+creditsImg.src = 'assets/img/logo_stamm_neon_glow2.png';
+
 // Credits Button
 creditsBtn.addEventListener('click', () => {
     buttonSound.play();
@@ -576,6 +580,9 @@ creditsBtn.addEventListener('click', () => {
     mainMenu.style.display = 'none';
     backBtn.style.display = 'flex';
     console.log("Credits <3");
+    ctx.fillStyle = 'rgba(84, 14, 93, 0.61)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(creditsImg, 0, 0, canvas.width, canvas.height);
 })
 
 // Back Button
@@ -584,7 +591,6 @@ backBtn.addEventListener('click', () => {
     mainDiv.style.display = '';
     mainMenu.style.display = '';
     backBtn.style.display = 'none';
-    console.log("back in bus");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 })
 
