@@ -449,7 +449,7 @@ function handlePause() {
     ctx.fillText('Your score is:' + score, 150, 600);
     // Volume
     ctx.font = '13px pressStart2P';
-    ctx.fillText('VOL:' + Math.floor(masterVolume), 820, 430);
+    ctx.fillText('VOL:' + masterVolume, 820, 430);
     pauseBtn.style.display = 'flex';
     document.getElementById("pause").onclick = function () {
         pauseBtn.style.display = 'none';
@@ -473,7 +473,6 @@ function animate() {
         //Erstellen der Spielfigur
         car.update();
         car.draw();
-        handleSpeedBar();
         if (frame < 500 && tutorialWatched == false && pause == false) {
             drawTutorial();
         } else {
@@ -490,7 +489,7 @@ function animate() {
             }
             drawScore();
             drawLives();
-
+            handleSpeedBar();
             score++;
 
             // Leben +1 Schriftzug, bei powerup. Wird in powerups.js auf true gesetzt.
