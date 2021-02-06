@@ -216,6 +216,9 @@ function handleRoadblock() {
 const wasd = new Image();
 wasd.src = 'assets/img/wasd.png'
 
+const spaceImg = new Image();
+spaceImg.src = 'assets/img/space.png'
+
 function drawTutorial() {
 
     ctx.fillStyle = 'white';
@@ -228,6 +231,13 @@ function drawTutorial() {
     ctx.fillStyle = 'white';
     ctx.font = '60px pressStart2P';
     ctx.fillText('To move', 460, 500);
+
+    // Spacebar Bild
+    ctx.drawImage(spaceImg, 400, 515, 220, 144)
+
+    ctx.fillStyle = 'white';
+    ctx.font = '30px pressStart2P';
+    ctx.fillText('To pause', 650, 605);
 }
 
 const gameoverImg = new Image();
@@ -430,7 +440,7 @@ const addLive = {
 }
 
 const pauseImg = new Image();
-pauseImg.src = 'assets/img/pauseImg.png'
+pauseImg.src = 'assets/img/pauseImg.png';
 
 function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
