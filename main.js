@@ -448,9 +448,6 @@ function insertAfter(referenceNode, newNode) {
 
 // Pause Funktion
 function handlePause() {
-    // Grauer Hintergrund
-    ctx.fillStyle = ('rgba(34,34,34,0.6)');
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
     // Pause Bild (altes Radio)
     ctx.drawImage(pauseImg, 325, 200, 630, 512);
     // Score anzeigen
@@ -459,7 +456,7 @@ function handlePause() {
     ctx.fillText('Your score is:' + score, 150, 600);
     // Volume
     ctx.font = '13px pressStart2P';
-    ctx.fillText('VOL:' + masterVolume, 820, 430);
+    ctx.fillText('VOL:' + Math.floor(masterVolume * 100) / 100, 820, 430);
     pauseBtn.style.display = 'flex';
     document.getElementById("pause").onclick = function () {
         pauseBtn.style.display = 'none';
@@ -468,7 +465,7 @@ function handlePause() {
         leiser.style.display = 'none';
         lauter.style.display = 'none';
     }
-
+    ctx.restore();
 }
 
 
@@ -476,6 +473,11 @@ function handlePause() {
 // ANIMATION LOOP
 //-----------------------------------------------------
 function animate() {
+    bgAudio.volume = masterVolume;
+    console.log(masterVolume);
+    if (pause) {
+        handlePause();
+    }
     if (!pause) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         // Background Methode aufrufen
