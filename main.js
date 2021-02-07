@@ -379,10 +379,7 @@ function handleGameOver() {
 
     // Highscore save
     txtName.style.display = 'flex';
-    var logStream = fs.createWriteStream('/highscore.txt', { 'flags': 'w' });
-    logStream.write(this.score);
 
-    console.log('f1')
     bgAudio.pause();
     console.log(ga);
     gameOver = true;
@@ -607,12 +604,20 @@ backBtn.addEventListener('click', () => {
 
 lauter.addEventListener('click', () => {
     buttonSound.play();
-    masterVolume += 0.1;
+    if (masterVolume > 0.9) {
+        masterVolume = 1
+    } else {
+        masterVolume += 0.1;
+    }
     console.log(masterVolume);
 })
 leiser.addEventListener('click', () => {
     buttonSound.play();
-    masterVolume -= 0.1;
+    if (masterVolume < 0.1) {
+        masterVolume = 0
+    } else {
+        masterVolume -= 0.1;
+    }
     console.log(masterVolume);
 })
 
@@ -643,13 +648,21 @@ muteBtn.addEventListener('click', () => {
 
 volUpBtn.addEventListener('click', () => {
     buttonSound.play();
-    masterVolume += 0.1;
+    if (masterVolume > 0.9) {
+        masterVolume = 1
+    } else {
+        masterVolume += 0.1;
+    }
     console.log(masterVolume);
 })
 
 volDownBtn.addEventListener('click', () => {
     buttonSound.play();
-    masterVolume -= 0.1;
+    if (masterVolume < 0.1) {
+        masterVolume = 0
+    } else {
+        masterVolume -= 0.1;
+    }
     console.log(masterVolume);
 })
 
