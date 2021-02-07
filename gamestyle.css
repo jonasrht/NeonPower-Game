@@ -143,10 +143,6 @@
     background-color: aliceblue;
 }
 
-#muteBtn:active {
-    background-image: url(assets/img/Credits_normal.png);
-}
-
 #fullscreenBtn {
     display: block;
     position: absolute;
