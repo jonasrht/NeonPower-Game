@@ -552,7 +552,6 @@ leiser.addEventListener('click', () => {
 
 //TryAgain Button
 tryAgain.addEventListener('click', () => {
-    sendData();
     init();
     animate();
     startEngine.play();
