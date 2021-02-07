@@ -17,7 +17,6 @@ const fullscreenBtn = document.getElementById('fullscreenBtn');
 const tryAgain = document.getElementById('tryAgain');
 const lauter = document.getElementById('Lauter');
 const leiser = document.getElementById('Leiser');
-const txtName = document.getElementById('txtName');
 const repairSound = document.getElementById('repairSound');
 const gameDiv = document.getElementById('gameDiv');
 const policeSound = document.getElementById('policeSound');
@@ -311,9 +310,6 @@ function handleGameOver() {
     startGameBtn.style.marginTop = '50px';
     startGameBtn.style.marginLeft = '50px';
     // backBtn.style.display = 'flex'
-
-    // Highscore save
-    txtName.style.display = 'flex';
     bgAudio.pause();
     console.log(ga);
     gameOver = true;
@@ -565,7 +561,6 @@ tryAgain.addEventListener('click', () => {
     bgAudio.currentTime = 0;
     tryAgain.style.display = 'none';
     canvas.style.backgroundImage = 'none';
-    txtName.style.display = 'none';
 })
 
 // Mute Button
